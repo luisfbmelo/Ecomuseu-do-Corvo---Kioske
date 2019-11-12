@@ -1,11 +1,13 @@
 const electron = require('electron');
-const { app, BrowserWindow } = electron;
+const { app, BrowserWindow, Menu } = electron;
  
 let win;
 
 function createWindow () {
  /*  const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize */
   // Create the browser window.
+  Menu.setApplicationMenu(null);
+
   win = new BrowserWindow({
     width: 1280,
     height: 720,
@@ -14,7 +16,7 @@ function createWindow () {
     }
   });
   
-  //win.setFullScreen(true);
+  /* win.setFullScreen(true); */
  
   // and load the index.html of the app.
   if(process.env.NODE_ENV === 'development'){

@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import Root from './Root';
+import CustomRoutes from './routes';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+/* import * as Sentry from '@sentry/browser'; */
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// Init Sentry for error reporting
+/* Sentry.init({
+ dsn: "https://c9a61739991f4b0d9fd069156e23a716@sentry.io/1338793"
+}); */
+
+
+ReactDOM.render(
+<Root>  
+  <CustomRoutes />
+</Root>
+, document.getElementById('root'));
