@@ -6,7 +6,7 @@ let win;
 function createWindow () {
  /*  const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize */
   // Create the browser window.
-  Menu.setApplicationMenu(null);
+  /* Menu.setApplicationMenu(null); */
 
   win = new BrowserWindow({
     width: 1280,
