@@ -1,4 +1,7 @@
-// VIDEOS
+//  APP RELATED
+export const RESET_APP = 'RESET_APP';
+
+//  VIDEOS
 export const VIDEOS_REQUEST = 'VIDEOS_REQUEST';
 export const VIDEOS_SUCCESS = 'VIDEOS_SUCCESS';
 export const VIDEOS_FAILURE = 'VIDEOS_FAILURE';

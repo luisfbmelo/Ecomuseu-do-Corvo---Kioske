@@ -5,8 +5,16 @@ import { combineReducers } from 'redux';
 //  =================================
 import videos from './videos';
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   videos
-}); 
+})
+
+const rootReducer = (state: any, action: any) => {
+  if (action.type === 'RESET_APP') {
+    state = undefined
+  }
+
+  return appReducer(state, action)
+}
 
 export default rootReducer;

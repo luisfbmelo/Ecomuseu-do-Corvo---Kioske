@@ -1,6 +1,7 @@
 const electron = require('electron');
-const { app, BrowserWindow, Menu } = electron;
- 
+require('electron-reload');
+const { app, BrowserWindow, Menu, powerMonitor } = electron;
+
 let win;
 
 function createWindow () {
@@ -12,7 +13,8 @@ function createWindow () {
     width: 1280,
     height: 720,
     webPreferences: {
-      nodeIntegration: false
+      nodeIntegration: false,
+      preload: __dirname + '/preload.js'
     }
   });
   
@@ -35,7 +37,21 @@ function createWindow () {
     // when you should delete the corresponding element.
     win = null
   });
-  
+
+  //  =====================================================
+  //  Custom code
+  //  =====================================================
+  //  Check idle time of system
+  setInterval(function() {
+    if(powerMonitor.getSystemIdleTime()>5){
+      win.webContents.send('reset:warn', powerMonitor.getSystemIdleTime());
+    }
+
+    if(powerMonitor.getSystemIdleTime()===10){
+      win.webContents.send('reset:command', powerMonitor.getSystemIdleTime());
+    }
+    console.log(`idle for ${powerMonitor.getSystemIdleTime()} seconds`)
+  }, 1000);
 }
  
 app.on('ready', createWindow);
@@ -56,3 +72,5 @@ app.on('activate', () => {
     createWindow();
   }
 })
+
+

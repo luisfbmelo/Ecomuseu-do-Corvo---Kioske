@@ -1,6 +1,9 @@
 import React from 'react';
 import Logo from 'assets/img/logos/logoSVG';
 
+//  ====================================================
+//  Styles
+//  ====================================================
 import HomeStyled from 'assets/theme/screens/homeStyle';
 
 //  ====================================================

@@ -18,7 +18,6 @@ import { MainNav } from 'assets/theme/components/menus/mainMenuStyle';
 import {Link} from 'react-router-dom';
 
 export default (props: any) => {
-  console.log(props);
   return(
   <MainNav>
     <ul>

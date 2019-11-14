@@ -4,7 +4,7 @@ export const HomeNav = styled.nav`
   position: absolute;
   bottom:0;
   left:0;
-  width:100vw;
+  width:100%;
   font-family: ${props => props.theme.types.title};
 
   ul{
@@ -38,12 +38,19 @@ export const HomeNav = styled.nav`
 
         svg path{
           fill: ${props => props.theme.brown};
-        }     
+          transition: all 0.2s ease;
+        }  
 
         &:hover,
         &:active,
-        &:focus{
-          background-color: ${props => props.theme.primary_active};
+        &:focus,
+        &.active{
+          background-color: ${props => props.theme.brown};
+          color: ${props => props.theme.primary};
+
+          svg path{
+            fill: ${props => props.theme.primary};
+          }     
         }
       }
 
