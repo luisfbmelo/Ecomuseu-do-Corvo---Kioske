@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
 export const MainNav = styled.nav`
-  position: absolute;
-  top:0;
-  left:0;
   height:100vh;
   width: 10vw;
   font-family: ${props => props.theme.types.title};

@@ -19,7 +19,7 @@ import {Link} from 'react-router-dom';
 
 export default (props: any) => {
   return(
-  <MainNav>
+  <MainNav className="main-nav">
     <ul>
       <li>
         <Link to="/">
