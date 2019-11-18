@@ -9,7 +9,8 @@ import Empty from 'containers/layouts/emptyContainer';
 
 //  Screens
 import HomeScreen from 'screens/Home';
-import ArchiveScreen from 'screens/Archive';
+import ArchiveScreen from 'screens/Archive/Archive';
+import CatArchiveScreen from 'screens/Archive/CatArchive';
 
 export default () => (
   <BrowserRouter>
@@ -26,6 +27,7 @@ export default () => (
                 <Switch location={location}>
                     <Route exact path="/" component={HomeScreen}/>
                     <Route exact path="/archive" component={ArchiveScreen} />
+                    <Route exact path="/archive/:id_cat" component={CatArchiveScreen} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>

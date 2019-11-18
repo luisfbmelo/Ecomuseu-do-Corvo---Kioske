@@ -4,10 +4,9 @@ import fetch from 'isomorphic-fetch';
 const BASE_URL = process.env.REACT_APP_API_URL;
 
 
-function callApi(endpoint, sendToken, mustAuth, method, data) {
+function callApi(endpoint, method, data) {
   let config = {};
   
-  let token = localStorage && localStorage.getItem('reda_uid_t')
   config = { 
     method: method || 'GET',
     headers: {
@@ -18,17 +17,6 @@ function callApi(endpoint, sendToken, mustAuth, method, data) {
   if (data){
     config.body = JSON.stringify(data);
   }
-
-  
-  if(sendToken) {
-    if(token) {
-      config.headers.RedaUid = `${token}`;
-      /* config.headers.Authorization = `${token}`; */
-    } else if(mustAuth){
-      throw new Error("No token saved!");
-    }
-  }
-  
 
   return fetch(BASE_URL + endpoint, config)
     .then(response =>{    
@@ -52,7 +40,6 @@ function callApi(endpoint, sendToken, mustAuth, method, data) {
 export const CALL_API = Symbol('Call API')
 
 export default store => next => action => {
-  
   const callAPI = action[CALL_API]
   
   // So the middleware doesn't get applied to every single action
@@ -64,7 +51,7 @@ export default store => next => action => {
 }
 
 function makeAPIRequest(callAPI, next, store){
-  let { endpoint, types, sendToken, mustAuth, method, data, compData } = callAPI;
+  let { endpoint, types, method, data, compData } = callAPI;
   // eslint-disable-next-line no-unused-vars
   let requestType = null;
   let successType = null;
@@ -76,7 +63,7 @@ function makeAPIRequest(callAPI, next, store){
   
 
   // Passing the authenticated boolean back in our data will let us distinguish between normal and secret quotes
-  return callApi(endpoint, sendToken, mustAuth, method, data).then(
+  return callApi(endpoint, method, data).then(
     response => {
 
       // Continue to the requested information

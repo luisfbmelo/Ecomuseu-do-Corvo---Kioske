@@ -6,3 +6,9 @@ export const VIDEOS_REQUEST = 'VIDEOS_REQUEST';
 export const VIDEOS_SUCCESS = 'VIDEOS_SUCCESS';
 export const VIDEOS_FAILURE = 'VIDEOS_FAILURE';
 export const VIDEOS_RESET = 'VIDEOS_RESET';
+
+//  CATS
+export const CATS_REQUEST = 'CATS_REQUEST';
+export const CATS_SUCCESS = 'CATS_SUCCESS';
+export const CATS_FAILURE = 'CATS_FAILURE';
+export const CATS_RESET = 'CATS_RESET';

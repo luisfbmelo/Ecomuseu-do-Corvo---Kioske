@@ -8,10 +8,6 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle, theme } from 'assets/theme/globalStyle';
 
 export default class Empty extends Component {
-  constructor(props: any){
-    super(props);
-
-  }
 
   resetApp = () => {
 

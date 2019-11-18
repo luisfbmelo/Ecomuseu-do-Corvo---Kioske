@@ -1,12 +1,19 @@
-import React, { Component, ReactComponentElement } from "react";
+import React, { Component } from "react";
 
+//  ============================================
 //  Styles
+//  ============================================
 import GalleryStyled from 'assets/theme/components/galleries/galleryStyle'
 
+//  ============================================
 //  Components
+//  ============================================
+import {Link} from 'react-router-dom';
 import Slider from "assets/theme/components/galleries/slickStyle";
 
+//  ============================================
 //  Images
+//  ============================================
 import bgImage from 'assets/img/backgrounds/Main_background.png';
 
 export default class SwipeToSlide extends Component {
@@ -49,7 +56,7 @@ export default class SwipeToSlide extends Component {
         <h1>Arquivo Fotográfico</h1>
         <h2>Escolha um tema para iniciar a sua exploração do nosso arquivo</h2>
         <Slider {...this.settings}>
-          <a href="#" onClick={this.handleClick}>
+          <Link to="/archive/15" onClick={this.handleClick}>          
             <div 
               className="img-container" 
               style={{
@@ -58,71 +65,71 @@ export default class SwipeToSlide extends Component {
 
               </div>
             <h3>Agricultura e pecuária</h3>
-          </a>
-          <a href="#" onClick={this.handleClick}>
+          </Link>
+          <Link to="/archive/15" onClick={this.handleClick}> 
             <div 
               className="img-container" 
               style={{
                 backgroundImage: `url("${bgImage}")`
               }}></div>
             <h3>Ciclo da lã</h3>
-          </a>
-          <a href="#" onClick={this.handleClick}>
+          </Link>
+          <Link to="/archive/15" onClick={this.handleClick}> 
             <div 
               className="img-container" 
               style={{
                 backgroundImage: `url("${bgImage}")`
               }}></div>
             <h3>Eletricidade e água</h3>
-          </a>
-          <a href="#" onClick={this.handleClick}>
+          </Link>
+          <Link to="/archive/15" onClick={this.handleClick}> 
             <div 
               className="img-container" 
               style={{
                 backgroundImage: `url("${bgImage}")`
               }}></div>
             <h3>Emigração</h3>
-          </a>
-          <a href="#" onClick={this.handleClick}>
+          </Link>
+          <Link to="/archive/15" onClick={this.handleClick}> 
             <div 
               className="img-container" 
               style={{
                 backgroundImage: `url("${bgImage}")`
               }}></div>
             <h3>Matança do porco</h3>
-          </a>
-          <a href="#" onClick={this.handleClick}>
+          </Link>
+          <Link to="/archive/15" onClick={this.handleClick}> 
             <div 
               className="img-container" 
               style={{
                 backgroundImage: `url("${bgImage}")`
               }}></div>
             <h3>Mobilidades</h3>
-          </a>
-          <a href="#" onClick={this.handleClick}>
+          </Link>
+          <Link to="/archive/15" onClick={this.handleClick}> 
             <div 
               className="img-container" 
               style={{
                 backgroundImage: `url("${bgImage}")`
               }}></div>
             <h3>Paisagens e lugares</h3>
-          </a>
-          <a href="#" onClick={this.handleClick}>
+          </Link>
+          <Link to="/archive/15" onClick={this.handleClick}> 
             <div 
               className="img-container" 
               style={{
                 backgroundImage: `url("${bgImage}")`
               }}></div>
             <h3>Pesca e apanha do sargaço</h3>
-          </a>
-          <a href="#" onClick={this.handleClick}>
+          </Link>
+          <Link to="/archive/15" onClick={this.handleClick}> 
             <div 
               className="img-container" 
               style={{
                 backgroundImage: `url("${bgImage}")`
               }}></div>
             <h3>Religião e festividades</h3>
-          </a>
+          </Link>
         </Slider>
       </GalleryStyled>
     );
