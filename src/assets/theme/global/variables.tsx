@@ -5,7 +5,7 @@ export const colors = {
   primary: '#C8BC4D',
   primary_active: '#9c9236',
   brown: '#4E3B0E',
-  blackBackground: '#1D1D1D'
+  blackBackground: '#101010'
 }
 
 //  ==========================================================================

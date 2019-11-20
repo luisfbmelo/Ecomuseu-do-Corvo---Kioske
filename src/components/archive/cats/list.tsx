@@ -1,10 +1,15 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, useRef, RefObject } from 'react';
 import { RouteComponentProps, Link } from 'react-router-dom';
 
 //  ============================================
 //  Styles
 //  ============================================
 import CatsListStyled from 'assets/theme/components/archive/catsListStyle';
+
+//  ============================================
+//  Components
+//  ============================================
+import Backbutton from 'components/common/backButton';
 
 //  ============================================
 //  Types
@@ -25,52 +30,78 @@ interface CatsListProps extends RouteComponentProps<TParams>{
 }
 
 interface CatsListState {
-
 }
 
-//  ============================================
-//  Components
-//  ============================================
-
 class CatsList extends Component<CatsListProps, CatsListState>{
+  activeElRef: React.RefObject<HTMLLIElement>;
+  scrollableEl: React.RefObject<HTMLUListElement>;
+
   constructor(props: CatsListProps) {
     super(props);
+    this.activeElRef = React.createRef();
+    this.scrollableEl = React.createRef();
   }
 
   componentDidMount(){
-    this.props.fetchCats();    
-  }
+    this.props.fetchCats();
 
-  componentDidUpdate(){
-    console.log(this.props);
-  }
+    //  On first render, scroll page to active element
+    if(this.activeElRef.current && this.scrollableEl.current){
+      const rect = this.activeElRef.current.getBoundingClientRect();
+      const elemTop = rect.top;
+      const elemBottom = rect.bottom;
 
+      // Only completely visible elements return true:
+      const isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+
+      if(isVisible===false){
+        this.scrollableEl.current.scrollTo(0, this.activeElRef.current.offsetTop-100);
+      }
+    }  
+  }
+  
   renderList = () => {
-    return this.props.categories.data && this.props.categories.data.map((el: any) => (
-      <li key={el.id} className={el.id===parseInt(this.props.match.params.id_cat) ? 'active' : ''}>
-        {el.id===parseInt(this.props.match.params.id_cat) ? 
-          <span>{el.titulo}</span>
-        :
-        <Link to={`/archive/${el.titulo}`}>
-          {el.titulo}
-        </Link>
-        }
-        
-      </li>
-    ))
-  }
+    const tempList = this.props.categories.data /* && this.props.categories.data.filter((el: any) => el.arquivos!==null && el.arquivos.length>0) */;
 
-  shouldComponentUpdate(nextProps: CatsListProps, nextState: CatsListState){
-    return nextProps.categories.fetched && !this.props.categories.fetched;
+    return tempList && tempList.map((el: any) => {
+      const isActive = el.id===parseInt(this.props.match.params.id_cat);
+
+      let elProps: {key: number, className: string, ref?: RefObject<HTMLLIElement>} = {
+        key: el.id,
+        className: isActive ? 'active' : ''
+      }
+
+      if(isActive){
+        elProps.ref = this.activeElRef;
+      }
+
+      return (
+        <li 
+            {...elProps}
+          >
+          {el.id===parseInt(this.props.match.params.id_cat) ? 
+            <span>{el.titulo}</span>
+          :
+            <Link to={`/archive/${el.id}`}>
+              {el.titulo}
+            </Link>
+          }
+          
+        </li>
+      )
+    })
   }
 
   render() {
-    if(this.props.categories.data && this.props.categories.data.length==0){
+    if(this.props.categories.data && this.props.categories.data.length===0){
       return null;
     }
 
     return <CatsListStyled>
-      <ul>
+      <Backbutton prevLink="/archive">
+        Arquivo fotográfico
+      </Backbutton>
+      <ul ref={this.scrollableEl}>
         {this.renderList()}
       </ul>
     </CatsListStyled>

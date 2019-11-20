@@ -16,3 +16,7 @@ export default styled.div`
     font-size: 2vmin;
   }
 `
+
+export const GenericGalleryStyled = styled.div`
+
+`

@@ -1,12 +1,16 @@
 import { 
-	CATS_REQUEST, 
-	CATS_SUCCESS,
-	CATS_FAILURE,
-  CATS_RESET,
-  CAT_REQUEST, 
-	CAT_SUCCESS,
-	CAT_FAILURE,
-  CAT_RESET
+	IMAGES_REQUEST, 
+	IMAGES_SUCCESS,
+	IMAGES_FAILURE,
+  IMAGES_RESET,
+  IMAGE_REQUEST, 
+	IMAGE_SUCCESS,
+	IMAGE_FAILURE,
+  IMAGE_RESET,
+  RELATED_IMAGES_REQUEST, 
+	RELATED_IMAGES_SUCCESS,
+	RELATED_IMAGES_FAILURE,
+  RELATED_IMAGES_RESET
 } from 'actions/action-types';
 
 export const INITIAL_STATE = { fetching: false, fetched: false, data: null, errorMessage: null, errorStatus: null };
@@ -21,12 +25,12 @@ export type INITIAL_TYPE = {
 
 export default function(state = INITIAL_STATE, action: any) {
   switch(action.type) {
-    case CATS_REQUEST:
+    case IMAGES_REQUEST:
       return {
         ...state,
         fetching: true
       }
-    case CATS_SUCCESS:
+    case IMAGES_SUCCESS:
       return {
         ...state,
         fetching: false,
@@ -35,14 +39,14 @@ export default function(state = INITIAL_STATE, action: any) {
         errorMessage: null,
         errorStatus: null
       }
-    case CATS_FAILURE:
+    case IMAGES_FAILURE:
       return {
         ...state,
         fetching: false,
         /* errorMessage: action.data.message,
         errorStatus: action.data.code */
       }
-    case CATS_RESET:
+    case IMAGES_RESET:
       return {
         ...state,
         fetching: false,
@@ -54,14 +58,15 @@ export default function(state = INITIAL_STATE, action: any) {
   }
 }
 
-export const category = function(state = INITIAL_STATE, action: any) {
+
+export const image = function(state = INITIAL_STATE, action: any) {
   switch(action.type) {
-    case CAT_REQUEST:
+    case IMAGE_REQUEST:
       return {
         ...state,
         fetching: true
       }
-    case CAT_SUCCESS:
+    case IMAGE_SUCCESS:
       return {
         ...state,
         fetching: false,
@@ -70,14 +75,49 @@ export const category = function(state = INITIAL_STATE, action: any) {
         errorMessage: null,
         errorStatus: null
       }
-    case CAT_FAILURE:
+    case IMAGE_FAILURE:
       return {
         ...state,
         fetching: false,
         /* errorMessage: action.data.message,
         errorStatus: action.data.code */
       }
-    case CAT_RESET:
+    case IMAGE_RESET:
+      return {
+        ...state,
+        fetching: false,
+        fetched: false,
+        data: null
+      }
+    default:
+      return state;
+  }
+}
+
+export const relatedimages = function(state = INITIAL_STATE, action: any) {
+  switch(action.type) {
+    case RELATED_IMAGES_REQUEST:
+      return {
+        ...state,
+        fetching: true
+      }
+    case RELATED_IMAGES_SUCCESS:
+      return {
+        ...state,
+        fetching: false,
+        fetched: true,
+        data: action.data,
+        errorMessage: null,
+        errorStatus: null
+      }
+    case RELATED_IMAGES_FAILURE:
+      return {
+        ...state,
+        fetching: false,
+        /* errorMessage: action.data.message,
+        errorStatus: action.data.code */
+      }
+    case RELATED_IMAGES_RESET:
       return {
         ...state,
         fetching: false,

@@ -11,18 +11,19 @@ import Empty from 'containers/layouts/emptyContainer';
 import HomeScreen from 'screens/Home';
 import ArchiveScreen from 'screens/Archive/Archive';
 import CatArchiveScreen from 'screens/Archive/CatArchive';
+import ImageDetailsScreen from 'screens/Archive/ImageDetails';
 
-export default () => (
+/* export default () => (
   <BrowserRouter>
     <Route
-      render={({ location }) => {
+      render={({ match, location }) => {
         return (
           <Empty>
-            <TransitionGroup component={null}>
+            <TransitionGroup>
               <CSSTransition
                 timeout={250}
                 classNames="page"
-                key={location.key}
+                key={match.path}
               >
                 <Switch location={location}>
                     <Route exact path="/" component={HomeScreen}/>
@@ -36,5 +37,20 @@ export default () => (
       }}
     />
     
+  </BrowserRouter>
+); */
+
+export default () => (
+  <BrowserRouter>
+    <Route>
+      <Empty>
+        <Switch>
+          <Route exact path="/" component={HomeScreen}/>
+          <Route exact path="/archive" component={ArchiveScreen} />
+          <Route exact path="/archive/:id_cat" component={CatArchiveScreen} />
+          <Route exact path="/archive/:id_cat/image/:id_image" component={ImageDetailsScreen} />
+        </Switch>
+      </Empty>
+    </Route>
   </BrowserRouter>
 );

@@ -10,12 +10,13 @@ import * as variables from './global/variables';
 //  ==========================================================================
 import headingsStyles from './global/headings';
 import containersStyles from './global/containers';
+import textStyles from './global/text';
 
 export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     font-family: ${props => props.theme.types.body};
-    overflow: none;
+    overflow: hidden;
   }
   
   /* HEADINGS */
@@ -23,6 +24,9 @@ export const GlobalStyle = createGlobalStyle`
 
   /* APP CONTAINERS */
   ${containersStyles}
+
+  /* TEXT */
+  ${textStyles}
   
 `
 

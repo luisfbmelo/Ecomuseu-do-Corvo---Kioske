@@ -113,3 +113,53 @@ export default styled(Slider)`
 
  
 `
+
+//  =====================================================
+//  Generic gallery with Slick
+//  =====================================================
+export const GenericSlider = styled(Slider)`
+  width: 100%;
+  height: 150px;
+  padding-top:20px;
+
+  .slick-list,
+  .slick-track{
+    height:100%;
+  }
+
+  .slick-slide{
+    width:185px;
+    height:100%;
+    transition: all 0.3s ease;
+    /* transition-delay: 300ms; */
+    padding: 0 15px;
+
+    & > div{
+      height:100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      
+    }
+
+    a{
+      display: block!important;
+      height: 100%!important;
+      width: 100%!important;
+      margin: 0 auto;
+      transition: all 0.3s ease;
+      /* transition-delay: 300ms; */
+      
+      text-decoration: none;
+      outline: none;
+
+      .img-container{
+        width:100%;
+        height:100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+
+`

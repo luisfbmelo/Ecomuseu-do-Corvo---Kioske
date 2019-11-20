@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 //  ====================================================
 //  Styles
@@ -11,22 +11,24 @@ import { MainContainerStyle } from 'assets/theme/global/containers';
 //  Components
 //  ====================================================
 import Menu from 'components/menus/mainMenu';
-import CatsList from 'containers/archive/cats/list';
-import ImagesList from 'containers/archive/images/list';
+import ImageDetailsContainer from 'containers/archive/images/details';
+import ImagePreview from 'containers/archive/images/details/preview';
+import ImageRelated from 'containers/archive/images/details/related';
 
-class CategoriesArchiveScreen extends PureComponent<RouteComponentProps, {}>{
+class ImageDetailsScreen extends PureComponent<RouteComponentProps, {}>{
   
   render(){
     return (
       <ArchiveStyled className="page-wrapper">
         <Menu />
-        <CatsList />
-        <MainContainerStyle width="70vw">
-          <ImagesList />
+        <ImageDetailsContainer />
+        <MainContainerStyle width="65vw">
+          <ImagePreview />
+          <ImageRelated />
         </MainContainerStyle>      
       </ArchiveStyled>
     );
   }
 }
 
-export default CategoriesArchiveScreen;
+export default withRouter(ImageDetailsScreen);

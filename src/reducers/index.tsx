@@ -4,11 +4,16 @@ import { combineReducers } from 'redux';
 //  Reducers
 //  =================================
 import videos from './videos';
-import categories from './cats';
+import categories, { category } from './cats';
+import images, { image, relatedimages } from './images';
 
 const appReducer = combineReducers({
   videos,
-  categories
+  categories,
+  category,
+  images,
+  image,
+  relatedimages
 })
 
 const rootReducer = (state: any, action: any) => {
