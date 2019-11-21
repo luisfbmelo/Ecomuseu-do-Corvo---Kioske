@@ -25,6 +25,7 @@ function callApi(endpoint, method, data, store) {
   }
 
 
+  //  Show Loading if not already shown
   if(!store.getState().loading.status)
     store.dispatch(startLoading())
 
@@ -73,7 +74,9 @@ function makeAPIRequest(callAPI, next, store){
   // Passing the authenticated boolean back in our data will let us distinguish between normal and secret quotes
   return callApi(endpoint, method, data, store).then(
     response => {
-      store.dispatch(stopLoading())
+      //  Hide loading
+      store.dispatch(stopLoading());
+
       // Continue to the requested information
       if (successType){
         next({
