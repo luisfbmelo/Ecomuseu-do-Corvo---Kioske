@@ -152,12 +152,17 @@ export const GenericSlider = styled(Slider)`
       
       text-decoration: none;
       outline: none;
+      transition: all 0.3s ease;
+      &:hover{
+        box-shadow: 0px 1px 8px 5px #00000090;
+      }
 
       .img-container{
         width:100%;
         height:100%;
         background-repeat: no-repeat;
         background-size: cover;
+        background-position: center center;
       }
     }
   }

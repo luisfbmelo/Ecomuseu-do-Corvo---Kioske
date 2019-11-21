@@ -34,6 +34,7 @@ export const LinkStyled = styled(Link)`
   background-image: url("${(props: { bgimage?: string }) => props.bgimage || ''}");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center center;
   transition: all 0.3s ease;
 
   &:hover{

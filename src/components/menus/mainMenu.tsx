@@ -4,8 +4,8 @@ import React from 'react';
 //  Images
 //  ============================================
 import HomeIcon from 'assets/img/icons/homeSVG';
-import infoIcon from 'assets/img/icons/info.svg';
-import helpIcon from 'assets/img/icons/help.svg';
+/* import infoIcon from 'assets/img/icons/info.svg';
+import helpIcon from 'assets/img/icons/help.svg'; */
 
 //  ============================================
 //  Styles

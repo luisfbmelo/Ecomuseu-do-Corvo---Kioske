@@ -2,6 +2,9 @@ const electron = require('electron');
 require('electron-reload');
 const { app, BrowserWindow, Menu, powerMonitor } = electron;
 
+const path = require('path');
+const url = require('url');
+
 let win;
 
 function createWindow () {
@@ -13,19 +16,21 @@ function createWindow () {
     width: 1280,
     height: 720,
     webPreferences: {
-      nodeIntegration: false,
-      preload: __dirname + '/preload.js'
+      nodeIntegration: true,
+      preload: __dirname + '/preload.js',
+      webviewTag: true
     }
   });
   
   /* win.setFullScreen(true); */
- 
-  // and load the index.html of the app.
-  if(process.env.NODE_ENV === 'development'){
-    win.loadURL('http://localhost:3000');
-  }else{
-    win.loadFile('build/index.html');
-  }
+  
+  const startUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : url.format({
+    pathname: path.join(__dirname, 'build/index.html'),
+    protocol: 'file:',
+    slashes: true
+  });
+
+  win.loadURL(startUrl);
   
   // Open the DevTools.
   win.webContents.openDevTools();

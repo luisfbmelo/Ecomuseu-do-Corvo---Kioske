@@ -34,9 +34,9 @@ interface ImagesListState {
 }
 
 class ImagesListContainer extends Component<ImagesListProps, ImagesListState>{
-  constructor(props: ImagesListProps) {
+  /* constructor(props: ImagesListProps) {
     super(props);
-  }
+  } */
 
   componentDidMount(){
     this.requestNewData();

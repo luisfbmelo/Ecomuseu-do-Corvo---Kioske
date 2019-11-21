@@ -11,17 +11,17 @@ import { MainContainerStyle } from 'assets/theme/global/containers';
 //  Components
 //  ====================================================
 import Menu from 'components/menus/mainMenu';
-import SwipperGallery from 'containers/galleries/list';
+import Webview from 'containers/webview';
 
-const ArchiveScreen: React.FC = (props: any) => {
+const WebpageScreen: React.FC = (props: any) => {
   return (
     <ArchiveStyled className="page-wrapper">
       <Menu />
       <MainContainerStyle>
-        <SwipperGallery />
+        <Webview/>
       </MainContainerStyle>      
     </ArchiveStyled>
   );
 }
 
-export default withRouter(ArchiveScreen);
+export default withRouter(WebpageScreen);

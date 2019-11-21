@@ -25,9 +25,9 @@ export default styled.section`
 `
 
 export const ImageMetaStyled = styled.section`
-  padding: 30px 50px 0;
+  padding: 30px 40px 0;
   color:white;
-  height:calc(100% - 100px - 50px);
+  height:calc(100% - 100px);
   overflow-y: auto;
 
   &::-webkit-scrollbar { 

@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-//  ============================================
-//  Helpers
-//  ============================================
-import {hexToRgbA} from 'assets/theme/helpers/functions';
-
 export default styled(Link)`
   display: block;
   

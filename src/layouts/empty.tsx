@@ -7,6 +7,11 @@ import { Component } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle, theme } from 'assets/theme/globalStyle';
 
+//  ==============================================
+//  Components
+//  ==============================================
+import Loading from 'containers/common/loading';
+
 export default class Empty extends Component {
 
   resetApp = () => {
@@ -35,6 +40,7 @@ export default class Empty extends Component {
     return (
       <ThemeProvider theme={theme}>
         <GlobalStyle />
+        <Loading />
         {this.props.children}
       </ThemeProvider>
     );

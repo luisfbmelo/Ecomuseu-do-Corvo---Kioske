@@ -6,6 +6,7 @@ import { combineReducers } from 'redux';
 import videos from './videos';
 import categories, { category } from './cats';
 import images, { image, relatedimages } from './images';
+import loading from './loading';
 
 const appReducer = combineReducers({
   videos,
@@ -13,7 +14,8 @@ const appReducer = combineReducers({
   category,
   images,
   image,
-  relatedimages
+  relatedimages,
+  loading
 })
 
 const rootReducer = (state: any, action: any) => {

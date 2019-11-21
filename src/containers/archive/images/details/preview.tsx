@@ -13,7 +13,8 @@ import ImageDetailsPreview from 'components/archive/images/details/preview';
 
 function mapStateToProps(state: any) {
   return {
-    image: state.image
+    image: state.image,
+    relatedimages: state.relatedimages
   };
 }
 

@@ -9,7 +9,7 @@ export const toQueryString = function(data: any){
     let keys = Object.keys(data);
 
     for(let key of keys){ 
-        let customKey = key=="access" ? "modes" : key;
+        let customKey = key==="access" ? "modes" : key;
 
         if (data[key] instanceof Array){
             for (let value of data[key]){             
@@ -25,7 +25,7 @@ export const toQueryString = function(data: any){
 
             // Go for all keys
             for (let thisKey of thisKeyObjs){   
-                let customKey = thisKey=="access" ? "modes" : thisKey;  
+                let customKey = thisKey==="access" ? "modes" : thisKey;  
 
                 // If is an array
                 if (data[key][thisKey] instanceof Array){

@@ -1,6 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
 //  ==========================================================================
+//  Packages CSS
+//  ==========================================================================
+import 'react-image-lightbox/style.css';
+
+//  ==========================================================================
 //  Generic imports
 //  ==========================================================================
 import * as variables from './global/variables';
@@ -17,6 +22,10 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: ${props => props.theme.types.body};
     overflow: hidden;
+  }
+
+  *{
+    box-sizing: border-box;
   }
   
   /* HEADINGS */

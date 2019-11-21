@@ -41,12 +41,19 @@ export default styled.section`
       font-family: ${props => props.theme.types.title};
       font-size: 2vmin;
       font-weight: 300;
+      user-select: none;
     }
 
     i{
       padding:0 30px;
       color: ${props => props.theme.primary};
       font-size: 2vmin;
+      transition: all 0.3s ease;
+
+      &:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+      }
     }
   }
 `

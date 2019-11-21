@@ -1,10 +1,16 @@
 import fetch from 'isomorphic-fetch';
 
 // Actions
+import {
+  startLoading,
+  stopLoading
+} from 'actions/loading';
+
+//  CONSTS
 const BASE_URL = process.env.REACT_APP_API_URL+'/';
 
 
-function callApi(endpoint, method, data) {
+function callApi(endpoint, method, data, store) {
   let config = {};
   
   config = { 
@@ -18,6 +24,10 @@ function callApi(endpoint, method, data) {
     config.body = JSON.stringify(data);
   }
 
+
+  if(!store.getState().loading.status)
+    store.dispatch(startLoading())
+
   return fetch(BASE_URL + endpoint, config)
     .then(response =>{    
         return response.json()
@@ -27,12 +37,10 @@ function callApi(endpoint, method, data) {
     })
     .then(({ json, response }) => {
       if (!response.ok) {  
-
         return Promise.reject({error: json, response})
       }
       return json;
     }).catch(err => {
-
       return Promise.reject(err)
     })
 }
@@ -63,9 +71,9 @@ function makeAPIRequest(callAPI, next, store){
   
 
   // Passing the authenticated boolean back in our data will let us distinguish between normal and secret quotes
-  return callApi(endpoint, method, data).then(
+  return callApi(endpoint, method, data, store).then(
     response => {
-
+      store.dispatch(stopLoading())
       // Continue to the requested information
       if (successType){
         next({

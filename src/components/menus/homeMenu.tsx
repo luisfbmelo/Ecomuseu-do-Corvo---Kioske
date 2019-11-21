@@ -37,12 +37,12 @@ export default (props: any) => (
         </a>
       </li>
       <li>
-      <a href="">
-        <div>
+        <Link to="/visit">
+          <div>
             <WebsiteVisit />
             <span>Uma visita ao Corvo a<br/>1 de janeiro de 1973</span>
           </div>
-        </a>
+        </Link>
       </li>
     </ul>
   </HomeNav>

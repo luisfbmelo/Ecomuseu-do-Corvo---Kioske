@@ -1,5 +1,5 @@
-import React, { Component, useRef, RefObject } from 'react';
-import { RouteComponentProps, Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
 //  ============================================
 //  Styles
@@ -64,6 +64,16 @@ export default class ImageDetails extends Component<ImageDetailsProps, ImageDeta
   componentDidMount() {
     !this.props.category.fetched && this.props.fetchCategory(this.props.match.params.id_cat);
     !this.props.image.fetched && this.props.fetchImageDetails(this.props.match.params.id_image);
+  }
+  
+  componentDidUpdate(prevProps: ImageDetailsProps) {
+    if(prevProps.match.params.id_image!==this.props.match.params.id_image){
+      this.requestNewData();
+    }
+  }
+  
+  requestNewData = () => {
+    this.props.fetchImageDetails(this.props.match.params.id_image);
   }
 
   componentWillUnmount() {

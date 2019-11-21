@@ -32,7 +32,9 @@ export default class GenericGallery extends Component<GalleryProps, GalleryState
     slidesToScroll: number;
     variableWidth: boolean;
     swipeToSlide: boolean;
+    draggable: boolean;
   };
+  slider: any;
   
   constructor(props: GalleryProps) {
     super(props);
@@ -44,8 +46,11 @@ export default class GenericGallery extends Component<GalleryProps, GalleryState
       slidesToShow:5,
       slidesToScroll: 1,
       variableWidth: false,
-      swipeToSlide: true
+      swipeToSlide: true,
+      draggable: true
     };
+
+    this.slider = React.createRef();
   }
   
   renderList = () => {
@@ -68,7 +73,7 @@ export default class GenericGallery extends Component<GalleryProps, GalleryState
     
     return (
       <GenericGalleryStyled>
-        <GenericSlider {...this.settings}>
+        <GenericSlider {...this.settings} ref={c => (this.slider = c)}>
           {this.renderList()}
         </GenericSlider>
       </GenericGalleryStyled>

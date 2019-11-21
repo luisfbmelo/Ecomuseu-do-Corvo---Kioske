@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
 //  Generic components
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+/* import { TransitionGroup, CSSTransition } from 'react-transition-group'; */
 
 //  Layouts
 import Empty from 'containers/layouts/emptyContainer';
@@ -12,6 +12,7 @@ import HomeScreen from 'screens/Home';
 import ArchiveScreen from 'screens/Archive/Archive';
 import CatArchiveScreen from 'screens/Archive/CatArchive';
 import ImageDetailsScreen from 'screens/Archive/ImageDetails';
+import VisitWebpageScreen from 'screens/Visit/Webpage';
 
 /* export default () => (
   <BrowserRouter>
@@ -49,6 +50,7 @@ export default () => (
           <Route exact path="/archive" component={ArchiveScreen} />
           <Route exact path="/archive/:id_cat" component={CatArchiveScreen} />
           <Route exact path="/archive/:id_cat/image/:id_image" component={ImageDetailsScreen} />
+          <Route exact path="/visit" component={VisitWebpageScreen} />
         </Switch>
       </Empty>
     </Route>
