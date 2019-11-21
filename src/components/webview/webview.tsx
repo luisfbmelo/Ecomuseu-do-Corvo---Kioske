@@ -53,6 +53,9 @@ export default class WebviewContainer extends Component<IProps, IState>{
       canGoBack: this.webview.current.canGoBack(),
       canGoForward: this.webview.current.canGoForward(),
     });
+
+    this.webview.current.insertCSS('#header{display: none!important;}');
+    this.webview.current.insertCSS('#content{margin-top:-20vh}')
   }
 
   loadstart = () => {
