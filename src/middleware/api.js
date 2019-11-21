@@ -88,6 +88,9 @@ function makeAPIRequest(callAPI, next, store){
       
     })   
     .catch((result) => {
+      //  Hide loading
+      store.dispatch(stopLoading());
+      
       if (errorType){
         next({
           message: (result.error) ? (result.error.message || result.error) : 'There was an error.',
