@@ -36,7 +36,6 @@ export const GlobalStyle = createGlobalStyle`
 
   /* TEXT */
   ${textStyles}
-  
 `
 
 export const theme = {

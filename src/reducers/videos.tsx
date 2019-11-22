@@ -7,6 +7,14 @@ import {
 
 const INITIAL_STATE = { fetching: false, fetched: false, data: null, errorMessage: null, errorStatus: null, nextPageToken: null, prevPageToken: null, pageInfo: null };
 
+export type INITIAL_TYPE = {
+  fetching: boolean
+  fetched: boolean
+  data: any
+  errorMessage: string
+  errorStatus: string
+}
+
 export default function(state = INITIAL_STATE, action: any) {
   switch(action.type) {
     case VIDEOS_REQUEST:
@@ -19,7 +27,7 @@ export default function(state = INITIAL_STATE, action: any) {
         ...state,
         fetching: false,
         fetched: true,
-        data: action.data.result,
+        data: action.data,
         errorMessage: null,
         errorStatus: null
       }
@@ -27,8 +35,8 @@ export default function(state = INITIAL_STATE, action: any) {
       return {
         ...state,
         fetching: false,
-        errorMessage: action.message,
-        errorStatus: action.status
+        /* errorMessage: action.message,
+        errorStatus: action.status */
       }
     case VIDEOS_RESET:
       return {

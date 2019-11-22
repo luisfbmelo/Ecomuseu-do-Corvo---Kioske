@@ -10,7 +10,7 @@ import WebviewStyled from 'assets/theme/components/webview/webviewStyle';
 //  Components
 //  ============================================
 import WebviewMenu from 'components/webview/menu';
-const WebView = require('react-electron-web-view');
+/* const WebView = require('react-electron-web-view'); */
 
 //  ============================================
 //  Interfaces
@@ -90,7 +90,7 @@ export default class WebviewContainer extends Component<IProps, IState>{
           reload={this.reload}
           canGoBack={this.state.canGoBack}
           canGoForward={this.state.canGoForward}/>
-        <WebView src="https://www.csarmento.uminho.pt/site/s/porgener/page/corvo" ref={this.webview}/>
+        <webview src="https://www.csarmento.uminho.pt/site/s/porgener/page/corvo" ref={this.webview}/>
       </WebviewStyled>
     )
   }

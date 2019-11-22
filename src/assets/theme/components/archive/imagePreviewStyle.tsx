@@ -30,6 +30,11 @@ export default styled.section`
 
     &:hover{
       cursor: pointer;
+
+      .btn-expand{
+        color: ${props => props.theme.primary};
+        background-color: ${props => props.theme.brown};
+      }
     }
 
     img{
@@ -70,6 +75,7 @@ export default styled.section`
       padding: 20px 30px;
 
       box-shadow: 0px 1px 8px 5px #00000060;
+      transition: all 0.3s ease;
 
       span, i{
         vertical-align: middle;

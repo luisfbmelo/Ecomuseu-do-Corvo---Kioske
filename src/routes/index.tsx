@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import { Route, MemoryRouter, Switch } from 'react-router-dom';
 
 //  Generic components
 /* import { TransitionGroup, CSSTransition } from 'react-transition-group'; */
@@ -13,9 +13,10 @@ import ArchiveScreen from 'screens/Archive/Archive';
 import CatArchiveScreen from 'screens/Archive/CatArchive';
 import ImageDetailsScreen from 'screens/Archive/ImageDetails';
 import VisitWebpageScreen from 'screens/Visit/Webpage';
+import VideosScreen from 'screens/Videos/VideosArchive';
 
 /* export default () => (
-  <BrowserRouter>
+  <MemoryRouter>
     <Route
       render={({ match, location }) => {
         return (
@@ -38,11 +39,11 @@ import VisitWebpageScreen from 'screens/Visit/Webpage';
       }}
     />
     
-  </BrowserRouter>
+  </MemoryRouter>
 ); */
 
 export default () => (
-  <BrowserRouter>
+  <MemoryRouter>
     <Route>
       <Empty>
         <Switch>
@@ -51,8 +52,9 @@ export default () => (
           <Route exact path="/archive/:id_cat" component={CatArchiveScreen} />
           <Route exact path="/archive/:id_cat/image/:id_image" component={ImageDetailsScreen} />
           <Route exact path="/visit" component={VisitWebpageScreen} />
+          <Route exact path="/videos" component={VideosScreen} />
         </Switch>
       </Empty>
     </Route>
-  </BrowserRouter>
+  </MemoryRouter>
 );

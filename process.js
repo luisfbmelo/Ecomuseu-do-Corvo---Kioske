@@ -10,7 +10,8 @@ let win;
 function createWindow () {
  /*  const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize */
   // Create the browser window.
-  /* Menu.setApplicationMenu(null); */
+  if(process.env.NODE_ENV !== 'development')
+    Menu.setApplicationMenu(null);
 
   win = new BrowserWindow({
     width: 1280,
@@ -22,10 +23,11 @@ function createWindow () {
     }
   });
   
-  /* win.setFullScreen(true); */
+  if(process.env.NODE_ENV !== 'development')
+    win.setFullScreen(true);
   
   const startUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : url.format({
-    pathname: path.join(__dirname, 'build/index.html'),
+    pathname: path.join(__dirname, '/index.html'),
     protocol: 'file:',
     slashes: true
   });
@@ -33,7 +35,8 @@ function createWindow () {
   win.loadURL(startUrl);
   
   // Open the DevTools.
-  win.webContents.openDevTools();
+  if(process.env.NODE_ENV === 'development')
+    win.webContents.openDevTools();
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -42,6 +45,10 @@ function createWindow () {
     // when you should delete the corresponding element.
     win = null
   });
+
+  win.once('ready-to-show', () => {
+    win.show()
+  })
 
   //  =====================================================
   //  Custom code

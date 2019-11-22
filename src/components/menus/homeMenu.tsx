@@ -29,12 +29,12 @@ export default (props: any) => (
         </Link>
       </li>
       <li>
-        <a href="">
+        <Link to="/videos">
           <div>
             <VideoArch />
             <span>Vivências Corvinas</span>
           </div>
-        </a>
+        </Link>
       </li>
       <li>
         <Link to="/visit">
