@@ -31,6 +31,9 @@ import VideosScreen from 'screens/Videos/VideosArchive';
                     <Route exact path="/" component={HomeScreen}/>
                     <Route exact path="/archive" component={ArchiveScreen} />
                     <Route exact path="/archive/:id_cat" component={CatArchiveScreen} />
+                    <Route exact path="/archive/:id_cat/image/:id_image" component={ImageDetailsScreen} />
+                    <Route exact path="/visit" component={VisitWebpageScreen} />
+                    <Route exact path="/videos" component={VideosScreen} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>
