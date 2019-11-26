@@ -1,6 +1,8 @@
 const electron = require('electron');
 require('electron-reload');
-const { app, BrowserWindow, Menu, powerMonitor } = electron;
+const { app, BrowserWindow, Menu, powerMonitor, ipcMain } = electron;
+
+const { autoUpdater } = require('electron-updater');
 
 const path = require('path');
 const url = require('url');
@@ -22,7 +24,11 @@ function createWindow () {
       webviewTag: true
     }
   });
-  
+
+  //  Check for updates
+  autoUpdater.checkForUpdatesAndNotify();
+
+  //  Enter full screen if not development
   if(process.env.NODE_ENV !== 'development')
     win.setFullScreen(true);
   
@@ -37,6 +43,7 @@ function createWindow () {
   // Open the DevTools.
   if(process.env.NODE_ENV === 'development')
     win.webContents.openDevTools();
+    
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -62,7 +69,9 @@ function createWindow () {
     if(powerMonitor.getSystemIdleTime()===10){
       win.webContents.send('reset:command', powerMonitor.getSystemIdleTime());
     }
-    console.log(`idle for ${powerMonitor.getSystemIdleTime()} seconds`)
+
+    console.log(`idle for ${powerMonitor.getSystemIdleTime()} seconds`);
+
   }, 1000);
 }
  
@@ -85,4 +94,20 @@ app.on('activate', () => {
   }
 })
 
+//  =====================================================
+//  Handle app updates
+//  =====================================================
+ipcMain.on('app_version', (event) => {
+  event.sender.send('app_version', { version: app.getVersion() });
+});
 
+autoUpdater.on('update-available', () => {
+  win.webContents.send('update:available');
+});
+autoUpdater.on('update-downloaded', () => {
+  win.webContents.send('update:downloaded');
+});
+
+ipcMain.on('app:restart', () => {
+  autoUpdater.quitAndInstall();
+});

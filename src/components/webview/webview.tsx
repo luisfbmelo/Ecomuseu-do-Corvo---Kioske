@@ -1,4 +1,4 @@
-import React, { Component, WebViewHTMLAttributes } from 'react';
+import React, { Component } from 'react';
 
 
 //  ============================================

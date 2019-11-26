@@ -52,6 +52,8 @@ REACT_APP_API_URL=<API_URL> // Place here your API URL
 
 ## Packaging
 
+Check this out: https://medium.com/@johndyer24/creating-and-deploying-an-auto-updating-electron-app-for-mac-and-windows-using-electron-builder-6a3982c0cee6
+
 In order to package a new release, you must run the following commands in the given order:
 1. `yarn react-build` // Will build with production variables
 2. `yarn electron-dist` // Will copy electron files inside build folder

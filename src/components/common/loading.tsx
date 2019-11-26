@@ -28,10 +28,6 @@ interface IState{
 }
 
 class LoadingComp extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-  }
-
   render() {
     if(!this.props.loading.status){
       return null;
