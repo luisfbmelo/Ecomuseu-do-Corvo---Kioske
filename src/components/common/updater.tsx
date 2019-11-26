@@ -60,7 +60,7 @@ export default class Updater extends Component<IProps, IState>{
     })
   }
 
-  updateProgress = (progressObj: any) => {
+  updateProgress = (event: any, progressObj: any) => {
     console.log("UPDATE PROGRESS");
     let log_message = "Download speed: " + progressObj.bytesPerSecond;
     log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';

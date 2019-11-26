@@ -18,7 +18,7 @@ export default styled.div`
   height:100%;
   width: 100%;
   background-color: ${props => hexToRgbA(props.theme.blackBackground, 0.9)};
-  z-index: 999999;
+  z-index: 99999;
   display: flex;
   align-items: center;
 `

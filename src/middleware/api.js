@@ -24,11 +24,6 @@ function callApi(endpoint, method, data, store) {
     config.body = JSON.stringify(data);
   }
 
-
-  //  Show Loading if not already shown
-  if(!store.getState().loading.status)
-    store.dispatch(startLoading())
-
   return fetch(BASE_URL + endpoint, config)
     .then(response =>{    
         return response.json()
@@ -70,12 +65,21 @@ function makeAPIRequest(callAPI, next, store){
     [ requestType, successType, errorType ] = types;
   }
   
+  //  Show Loading if not already shown
+  let startedLoading = false;
+  if(!store.getState().loading.status){
+    store.dispatch(startLoading());
+    startedLoading = true;
+  }
+    
 
   // Passing the authenticated boolean back in our data will let us distinguish between normal and secret quotes
   return callApi(endpoint, method, data, store).then(
     response => {
       //  Hide loading
-      store.dispatch(stopLoading());
+      if(startedLoading){
+        store.dispatch(stopLoading());
+      }
 
       // Continue to the requested information
       if (successType){

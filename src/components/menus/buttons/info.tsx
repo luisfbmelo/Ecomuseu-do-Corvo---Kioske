@@ -70,7 +70,7 @@ export default class InfoContainer extends Component<IProps, IState>{
 
     }
 
-    this.props.fetchInfo();
+    !this.props.info.data && this.props.fetchInfo();
   }
 
   getCurData = () => {
