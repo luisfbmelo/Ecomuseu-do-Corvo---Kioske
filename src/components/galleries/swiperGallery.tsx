@@ -75,21 +75,24 @@ export default class SwipeToSlide extends Component<CatsListProps, CatsListState
   }
   
   renderList = () => {
-    return this.props.categories.data && this.props.categories.data.map((el: any) => (
-      <Link to={{
-        pathname: `/archive/${el.id}`
-      }}
-      onClick={this.handleClick}
-      key={el.id}>          
-        <div 
-          className="img-container" 
-          style={{
-            backgroundImage: `url("${bgImage}")`
-          }}>
-        </div>
-        <h3>{el.titulo}</h3>
-      </Link>
-    ))
+    return this.props.categories.data && this.props.categories.data.map((el: any) => {
+      console.log(el);
+      return (
+        <Link to={{
+          pathname: `/archive/${el.id}`
+        }}
+        onClick={this.handleClick}
+        key={el.id}>          
+          <div 
+            className="img-container" 
+            style={{
+              backgroundImage: `url("${el.imagem ? process.env.REACT_APP_API_URL+el.imagem.url : bgImage}")`
+            }}>
+          </div>
+          <h3>{el.titulo}</h3>
+        </Link>
+      )
+    })
   }
 
   render() {

@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "author": "Luís Melo",
   "private": true,
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/luisfbmelo/Ecomuseu-do-Corvo---Kioske.git"
+  },
   "homepage": ".",
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "7.7.0",
@@ -49,7 +53,8 @@
     "electron-start": "set NODE_ENV=development&& electron ./process.js",
     "electron-pack-test": "electron-builder --dir --win -c.extraMetadata.main=build/electron/process.js",
     "electron-dist": "robocopy . build process.js preload.js",
-    "package": "electron-builder --win -c.extraMetadata.main=build/process.js"
+    "package": "electron-builder --win -c.extraMetadata.main=build/process.js",
+    "deploy": "electron-builder --win -c.extraMetadata.main=build/process.js --publish always"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -69,6 +74,9 @@
   "build": {
     "appId": "ecomuseu_corvo_electron",
     "artifactName": "Ecomuseu do Corvo - Kioske ${version}.${ext}",
+    "publish": [
+      "bitbucket"
+    ],
     "files": [
       "./build/**/*",
       "node_modules/**/*"

@@ -110,7 +110,7 @@ export default class VideosListComp extends Component<VideosListProps, VideosLis
 
         <ModalVideo
           isOpen={this.state.openVideo}
-          videoUrl={`https://www.youtube.com/embed/${this.state.selectedVideo}?autoplay=1&fs=0`}
+          videoUrl={`https://www.youtube.com/embed/${this.state.selectedVideo}?autoplay=1&fs=0&cc_load_policy=1&hl=en`}
           onClose={this.closedVideo}
           /*youtube={{
             autoplay: 1,
