@@ -1,6 +1,6 @@
 {
   "name": "ecomuseu_corvo_kioske",
-  "version": "0.1.0",
+  "version": "0.0.2-alpha",
   "author": "Luís Melo",
   "private": true,
   "repository": {
@@ -71,21 +71,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "build": {
-    "appId": "ecomuseu_corvo_electron",
-    "artifactName": "Ecomuseu do Corvo - Kioske ${version}.${ext}",
-    "publish": [
-      "bitbucket"
-    ],
-    "files": [
-      "./build/**/*",
-      "node_modules/**/*"
-    ],
-    "win": {
-      "target": "NSIS",
-      "icon": "build/logo512.ico"
-    }
   },
   "devDependencies": {
     "electron": "^7.1.2",

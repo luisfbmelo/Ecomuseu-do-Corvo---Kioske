@@ -2,6 +2,18 @@ const electron = require('electron');
 require('electron-reload');
 const { app, BrowserWindow, Menu, powerMonitor, ipcMain } = electron;
 
+//  ===================================================
+//  Mock version on development for auto updater
+//  ===================================================
+
+if(process.env.NODE_ENV === 'development'){
+  const {version} = require('./package.json');
+  app.getVersion = ()=> version;
+}
+//  ===================================================
+//  -- END
+//  ===================================================
+
 const { autoUpdater } = require('electron-updater');
 
 const path = require('path');
@@ -12,7 +24,7 @@ let win;
 function createWindow () {
  /*  const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize */
   // Create the browser window.
-  if(process.env.NODE_ENV !== 'development')
+  /* if(process.env.NODE_ENV !== 'development') */
     Menu.setApplicationMenu(null);
 
   win = new BrowserWindow({
@@ -29,7 +41,7 @@ function createWindow () {
   autoUpdater.checkForUpdatesAndNotify();
 
   //  Enter full screen if not development
-  if(process.env.NODE_ENV !== 'development')
+  /* if(process.env.NODE_ENV !== 'development') */
     win.setFullScreen(true);
   
   const startUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : url.format({
@@ -41,7 +53,7 @@ function createWindow () {
   win.loadURL(startUrl);
   
   // Open the DevTools.
-  if(process.env.NODE_ENV === 'development')
+  /* if(process.env.NODE_ENV === 'development') */
     win.webContents.openDevTools();
     
 
