@@ -49,3 +49,30 @@ If you are using a global configuration file `.env` or a staging file `.env.stag
 NODE_PATH=src/
 REACT_APP_API_URL=<API_URL> // Place here your API URL
 ```
+
+## Packaging
+
+In order to package a new release, you must run the following commands in the given order:
+1. `yarn react-build` // Will build with production variables
+2. `yarn electron-dist` // Will copy electron files inside build folder
+3. `yarn package` // Will package the files to an exe
+   * `yarn deploy`  // Same as `package`, but will deploy to github
+
+### Configuration
+
+Keep in mind that you must create a electron-builder.yml file with the given paramenters:
+
+```
+appId: [APP NAME]
+publish:
+  provider: github
+  token: [YOUR GITHUB ACCESS TOKEN]
+
+files:
+  - "./build/**/*",
+  - "node_modules/**/*"
+
+win":
+  target: "NSIS",
+  icon: [LOGO PATH]
+```
