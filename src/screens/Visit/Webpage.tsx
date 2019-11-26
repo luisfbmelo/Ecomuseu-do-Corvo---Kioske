@@ -19,7 +19,7 @@ const WebpageScreen: React.FC = (props: any) => {
       <Menu />
       <MainContainerStyle>
         <Webview/>
-      </MainContainerStyle>      
+      </MainContainerStyle>
     </ArchiveStyled>
   );
 }

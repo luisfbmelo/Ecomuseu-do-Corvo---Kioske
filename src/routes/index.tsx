@@ -5,7 +5,7 @@ import { Route, MemoryRouter, Switch } from 'react-router-dom';
 /* import { TransitionGroup, CSSTransition } from 'react-transition-group'; */
 
 //  Layouts
-import Empty from 'containers/layouts/emptyContainer';
+import Empty from 'layouts/empty';
 
 //  Screens
 import HomeScreen from 'screens/Home';

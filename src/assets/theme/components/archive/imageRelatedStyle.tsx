@@ -19,7 +19,7 @@ export default styled.section`
   &:after{
     content:"";
     position:absolute;    
-    z-index:99999;
+    z-index:9;
     top:0;
     width:20px;
     height:100%;

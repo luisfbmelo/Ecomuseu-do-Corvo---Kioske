@@ -1,4 +1,5 @@
 const electron = require('electron');
+
 require('electron-reload');
 const { app, BrowserWindow, Menu, powerMonitor, ipcMain } = electron;
 
@@ -15,6 +16,8 @@ if(process.env.NODE_ENV === 'development'){
 //  ===================================================
 
 const { autoUpdater } = require('electron-updater');
+autoUpdater.allowPrerelease = true;
+/* autoUpdater.autoDownload = false; */
 
 const path = require('path');
 const url = require('url');
@@ -24,7 +27,7 @@ let win;
 function createWindow () {
  /*  const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize */
   // Create the browser window.
-  /* if(process.env.NODE_ENV !== 'development') */
+  if(process.env.NODE_ENV !== 'development')
     Menu.setApplicationMenu(null);
 
   win = new BrowserWindow({
@@ -41,7 +44,7 @@ function createWindow () {
   autoUpdater.checkForUpdatesAndNotify();
 
   //  Enter full screen if not development
-  /* if(process.env.NODE_ENV !== 'development') */
+  if(process.env.NODE_ENV !== 'development')
     win.setFullScreen(true);
   
   const startUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : url.format({
@@ -53,7 +56,7 @@ function createWindow () {
   win.loadURL(startUrl);
   
   // Open the DevTools.
-  /* if(process.env.NODE_ENV === 'development') */
+  if(process.env.NODE_ENV === 'development')
     win.webContents.openDevTools();
     
 
@@ -74,12 +77,21 @@ function createWindow () {
   //  =====================================================
   //  Check idle time of system
   setInterval(function() {
-    if(powerMonitor.getSystemIdleTime()>5){
-      win.webContents.send('reset:warn', powerMonitor.getSystemIdleTime());
+    const resetWarn = 290;    //  Seconds
+    const resetTime = 300;    //  Seconds
+
+    const totalIdle = powerMonitor.getSystemIdleTime();
+
+    if(totalIdle>=resetWarn && totalIdle<resetTime){
+      win.webContents.send('reset:warn', resetTime-totalIdle);
     }
 
-    if(powerMonitor.getSystemIdleTime()===10){
-      win.webContents.send('reset:command', powerMonitor.getSystemIdleTime());
+    if(totalIdle===resetTime){
+      win.webContents.send('reset:command', totalIdle);
+    }
+
+    if(totalIdle<resetWarn){
+      win.webContents.send('reset:invalid');
     }
 
     console.log(`idle for ${powerMonitor.getSystemIdleTime()} seconds`);
@@ -116,10 +128,17 @@ ipcMain.on('app_version', (event) => {
 autoUpdater.on('update-available', () => {
   win.webContents.send('update:available');
 });
+autoUpdater.on('download-progress', (progressObj) => {
+  win.webContents.send('update:progress', progressObj);
+});
 autoUpdater.on('update-downloaded', () => {
   win.webContents.send('update:downloaded');
 });
 
 ipcMain.on('app:restart', () => {
   autoUpdater.quitAndInstall();
+});
+
+ipcMain.on('reset:reload', () => {
+  win.reload();
 });

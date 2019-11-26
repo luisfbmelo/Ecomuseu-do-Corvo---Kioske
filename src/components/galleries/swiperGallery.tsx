@@ -37,7 +37,6 @@ interface CatsListProps extends RouteComponentProps<TParams>{
 interface CatsListState {
 }
 
-
 export default class SwipeToSlide extends Component<CatsListProps, CatsListState> {
   settings: {
     className: string;
@@ -76,7 +75,6 @@ export default class SwipeToSlide extends Component<CatsListProps, CatsListState
   
   renderList = () => {
     return this.props.categories.data && this.props.categories.data.map((el: any) => {
-      console.log(el);
       return (
         <Link to={{
           pathname: `/archive/${el.id}`

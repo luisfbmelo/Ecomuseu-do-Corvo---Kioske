@@ -12,7 +12,7 @@
     <link rel="apple-touch-icon" href="logo192.png" />
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i&display=swap&subset=latin-ext" rel="stylesheet">
 
     <!-- SLICK -->
     <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" /> 
@@ -54,6 +54,7 @@
     -->
     <p id="version"></p>
     <script>
+      //  Show app version
       const { ipcRenderer } = require('electron');
       const version = document.getElementById('version');
       
@@ -61,6 +62,15 @@
       ipcRenderer.on('app_version', (event, arg) => {
         ipcRenderer.removeAllListeners('app_version');
         version.innerText = 'Version ' + arg.version;
+      });
+
+      //  Show dev tools event without menu bar
+      document.addEventListener("keydown", function (e) {
+        if (e.which === 123) {
+          require('remote').getCurrentWindow().toggleDevTools();
+        } else if (e.which === 116) {
+          location.reload();
+        }
       });
     </script>
   </body>

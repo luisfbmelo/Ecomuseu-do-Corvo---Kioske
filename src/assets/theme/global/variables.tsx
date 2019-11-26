@@ -13,7 +13,7 @@ export const colors = {
 //  ==========================================================================
 export const typography = {
   title: `'Lato', sans-serif`,
-  body: `'Quattrocento', serif`
+  body: `'Quattrocento Sans', sans-serif`
 }
 
 //  ==========================================================================

@@ -19,7 +19,7 @@ const ArchiveScreen: React.FC = (props: any) => {
       <Menu />
       <MainContainerStyle>
         <SwipperGallery />
-      </MainContainerStyle>      
+      </MainContainerStyle>
     </ArchiveStyled>
   );
 }

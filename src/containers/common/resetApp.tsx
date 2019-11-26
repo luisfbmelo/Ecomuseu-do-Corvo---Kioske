@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { resetApp } from 'actions/app';
 
 //  Component
-import EmptyLayout from 'layouts/empty';
+import AppReset from 'components/common/appReset';
 
 function mapStateToProps(state: any) {
   return {};
@@ -18,4 +18,4 @@ function mapDispatchToProps(dispatch: any) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(EmptyLayout);
+export default connect(mapStateToProps, mapDispatchToProps)(AppReset);

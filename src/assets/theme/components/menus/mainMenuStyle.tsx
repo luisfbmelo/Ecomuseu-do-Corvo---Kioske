@@ -19,11 +19,15 @@ export const MainNav = styled.nav`
     width:100%;
   }
 
-  a{
+  a,
+  button{
     display: block;
     color: ${props => props.theme.brown};
     text-decoration: none;
     padding: 15px 0;
+    background: none;
+    border: none;
+    width: 100%;
 
     transition: all 0.2s ease;
 
@@ -38,7 +42,8 @@ export const MainNav = styled.nav`
     &.active{
       background-color: ${props => props.theme.brown};
       color: ${props => props.theme.primary};
-
+      cursor: pointer;
+      
       svg path{
         fill: ${props => props.theme.primary};
       }     

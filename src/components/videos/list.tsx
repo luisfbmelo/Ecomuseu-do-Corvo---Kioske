@@ -59,7 +59,6 @@ export default class VideosListComp extends Component<VideosListProps, VideosLis
   
   componentDidUpdate(prevProps:VideosListProps, prevState:VideosListState) {
     console.log("UPDATED");
-    console.log(this.state);
   }
   
 

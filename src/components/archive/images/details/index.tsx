@@ -95,7 +95,7 @@ export default class ImageDetails extends Component<ImageDetailsProps, ImageDeta
         const value = dataObj && tempData[dataObj.name];
         return (
           <article key={dataObj && dataObj.label}>
-            <h3>{dataObj && dataObj.label}</h3>
+            <h6>{dataObj && dataObj.label}</h6>
             <p dangerouslySetInnerHTML={{__html: value.replace(/\n/g,"<br />")}}></p>
           </article>
         )

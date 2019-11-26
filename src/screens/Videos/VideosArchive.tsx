@@ -19,7 +19,7 @@ const VideosArchiveScreen: React.FC = (props: any) => {
       <Menu />
       <MainContainerStyle>
         <VideosList />
-      </MainContainerStyle>      
+      </MainContainerStyle>
     </ArchiveStyled>
   );
 }
