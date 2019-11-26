@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ModalVideoStyles from 'assets/theme//components/videos/modalVideo';
+import ModalVideoStyles from 'assets/theme/components/videos/modalVideo';
 
 export default (props: any) => {
   if(!props.isOpen){
