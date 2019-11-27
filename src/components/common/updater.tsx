@@ -72,7 +72,7 @@ export default class Updater extends Component<IProps, IState>{
     console.log(log_message);
 
     this.setState({
-      progress: progressObj.percent
+      progress: progressObj.percent.toFixed(0)
     });
   }
 
