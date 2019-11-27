@@ -14,6 +14,7 @@ import CatArchiveScreen from 'screens/Archive/CatArchive';
 import ImageDetailsScreen from 'screens/Archive/ImageDetails';
 import VisitWebpageScreen from 'screens/Visit/Webpage';
 import VideosScreen from 'screens/Videos/VideosArchive';
+import SettingsScreen from 'screens/Settings';
 
 /* export default () => (
   <MemoryRouter>
@@ -56,6 +57,7 @@ export default () => (
           <Route exact path="/archive/:id_cat/image/:id_image" component={ImageDetailsScreen} />
           <Route exact path="/visit" component={VisitWebpageScreen} />
           <Route exact path="/videos" component={VideosScreen} />
+          <Route exact path="/settings" component={SettingsScreen} />          
         </Switch>
       </Empty>
     </Route>

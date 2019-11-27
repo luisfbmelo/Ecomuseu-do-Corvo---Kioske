@@ -1,31 +1,40 @@
+//  ========================================================
+//  Require packages
+//  ========================================================
 const electron = require('electron');
-
 require('electron-reload');
 const { app, BrowserWindow, Menu, powerMonitor, ipcMain } = electron;
 
-//  ===================================================
-//  Mock version on development for auto updater
-//  ===================================================
 
+//  Mock version on development for auto updater
 if(process.env.NODE_ENV === 'development'){
   const {version} = require('./package.json');
   app.getVersion = ()=> version;
 }
-//  ===================================================
-//  -- END
-//  ===================================================
 
+//  Init auto updater
 const { autoUpdater } = require('electron-updater');
 autoUpdater.allowPrerelease = true;
-/* autoUpdater.autoDownload = false; */
 
+//  Init persistent store
+const Store = require('electron-store');
+const store = new Store();
+
+//  Init generic packages
 const path = require('path');
 const url = require('url');
+//  ========================================================
+//  END Require packages
+//  ========================================================
+
+//  Set default store values
+if(!store.has('settings:resettime')){
+  store.set('settings:resettime', 300);
+}
 
 let win;
 
 function createWindow () {
- /*  const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize */
   // Create the browser window.
   if(process.env.NODE_ENV !== 'development')
     Menu.setApplicationMenu(null);
@@ -77,8 +86,8 @@ function createWindow () {
   //  =====================================================
   //  Check idle time of system
   setInterval(function() {
-    const resetWarn = 290;    //  Seconds
-    const resetTime = 300;    //  Seconds
+    const resetWarn = parseInt(store.get('settings:resettime'))-10;    //  Seconds
+    const resetTime = store.get('settings:resettime');    //  Seconds
 
     const totalIdle = powerMonitor.getSystemIdleTime();
 
@@ -141,4 +150,19 @@ ipcMain.on('app:restart', () => {
 
 ipcMain.on('reset:reload', () => {
   win.reload();
+});
+
+//  =====================================================
+//  Handle Settings
+//  =====================================================
+//  Settings request from renderer
+ipcMain.on('settings:request', (event) => {
+  event.sender.send('settings:receive', {
+    resettime: store.get('settings:resettime')
+  });
+});
+
+//  Set settings
+ipcMain.on('settings:set', (evt, data) => {
+  store.set(`settings:${data.key}`, data.value);
 });

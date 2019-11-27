@@ -11,17 +11,17 @@ import { MainContainerStyle } from 'assets/theme/global/containers';
 //  Components
 //  ====================================================
 import Menu from 'containers/menus/mainMenu';
-import VideosList from 'containers/videos/list';
+import SettingsList from 'containers/settings';
 
-const VideosArchiveScreen: React.FC = (props: any) => {
+const WebpageScreen: React.FC = (props: any) => {
   return (
     <ArchiveStyled className="page-wrapper">
       <Menu />
       <MainContainerStyle>
-        <VideosList />
+        <SettingsList />
       </MainContainerStyle>
     </ArchiveStyled>
   );
 }
 
-export default withRouter(VideosArchiveScreen);
+export default withRouter(WebpageScreen);

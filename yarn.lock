@@ -852,6 +852,12 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@babel/runtime@^7.4.4":
+  version "7.7.4"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.4.tgz#b23a856751e4bf099262f867767889c0e3fe175b"
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@babel/template@^7.1.0", "@babel/template@^7.4.0", "@babel/template@^7.4.4", "@babel/template@^7.6.0":
   version "7.6.0"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.6.0.tgz#7f0159c7f5012230dad64cca42ec9bdb5c9536e6"
@@ -948,7 +954,7 @@
     global-agent "^2.0.2"
     global-tunnel-ng "^2.7.1"
 
-"@emotion/cache@^10.0.17":
+"@emotion/cache@^10.0.17", "@emotion/cache@^10.0.9":
   version "10.0.19"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.19.tgz#d258d94d9c707dcadaf1558def968b86bb87ad71"
   dependencies:
@@ -957,7 +963,7 @@
     "@emotion/utils" "0.11.2"
     "@emotion/weak-memoize" "0.2.4"
 
-"@emotion/core@^10.0.15":
+"@emotion/core@^10.0.15", "@emotion/core@^10.0.9":
   version "10.0.22"
   resolved "https://registry.yarnpkg.com/@emotion/core/-/core-10.0.22.tgz#2ac7bcf9b99a1979ab5b0a876fbf37ab0688b177"
   dependencies:
@@ -968,7 +974,7 @@
     "@emotion/sheet" "0.9.3"
     "@emotion/utils" "0.11.2"
 
-"@emotion/css@^10.0.22":
+"@emotion/css@^10.0.22", "@emotion/css@^10.0.9":
   version "10.0.22"
   resolved "https://registry.yarnpkg.com/@emotion/css/-/css-10.0.22.tgz#37b1abb6826759fe8ac0af0ac0034d27de6d1793"
   dependencies:
@@ -1408,7 +1414,7 @@
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
 
-"@types/react-dom@16.9.4":
+"@types/react-dom@*", "@types/react-dom@16.9.4":
   version "16.9.4"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.9.4.tgz#0b58df09a60961dcb77f62d4f1832427513420df"
   dependencies:
@@ -1445,13 +1451,21 @@
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react-slick@^0.23.4":
+"@types/react-select@^3.0.8":
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@types/react-select/-/react-select-3.0.8.tgz#b824a12d438dd493c30ffff49a805f797602a837"
+  dependencies:
+    "@types/react" "*"
+    "@types/react-dom" "*"
+    "@types/react-transition-group" "*"
+
+"@types/react-slick@0.23.4":
   version "0.23.4"
   resolved "https://registry.yarnpkg.com/@types/react-slick/-/react-slick-0.23.4.tgz#c97e2a9e7e3d1933c68593b8e82752fab1e8ce53"
   dependencies:
     "@types/react" "*"
 
-"@types/react-transition-group@4.2.3":
+"@types/react-transition-group@*", "@types/react-transition-group@4.2.3":
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.2.3.tgz#4924133f7268694058e415bf7aea2d4c21131470"
   dependencies:
@@ -2945,6 +2959,21 @@ concat-stream@1.6.2, concat-stream@^1.5.0:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
+conf@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/conf/-/conf-6.2.0.tgz#274d37a0a2e50757ffb89336e954d08718eb359a"
+  dependencies:
+    ajv "^6.10.2"
+    debounce-fn "^3.0.1"
+    dot-prop "^5.0.0"
+    env-paths "^2.2.0"
+    json-schema-typed "^7.0.1"
+    make-dir "^3.0.0"
+    onetime "^5.1.0"
+    pkg-up "^3.0.1"
+    semver "^6.2.0"
+    write-file-atomic "^3.0.0"
+
 config-chain@^1.1.11:
   version "1.1.12"
   resolved "https://registry.yarnpkg.com/config-chain/-/config-chain-1.1.12.tgz#0fde8d091200eb5e808caf25fe618c02f48e4efa"
@@ -3401,6 +3430,12 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
+debounce-fn@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/debounce-fn/-/debounce-fn-3.0.1.tgz#034afe8b904d985d1ec1aa589cd15f388741d680"
+  dependencies:
+    mimic-fn "^2.1.0"
+
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.8, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -3634,6 +3669,12 @@ dom-converter@^0.2:
   dependencies:
     utila "~0.4"
 
+dom-helpers@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-3.4.0.tgz#e9b369700f959f62ecde5a6babde4bccd9169af8"
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+
 dom-helpers@^5.0.1:
   version "5.1.3"
   resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-5.1.3.tgz#7233248eb3a2d1f74aafca31e52c5299cc8ce821"
@@ -3699,6 +3740,12 @@ dot-prop@^4.1.0, dot-prop@^4.1.1:
   dependencies:
     is-obj "^1.0.0"
 
+dot-prop@^5.0.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/dot-prop/-/dot-prop-5.2.0.tgz#c34ecc29556dc45f1f4c22697b6f4904e0cc4fcb"
+  dependencies:
+    is-obj "^2.0.0"
+
 dotenv-expand@5.1.0, dotenv-expand@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-5.1.0.tgz#3fbaf020bfd794884072ea26b1e9791d45a629f0"
@@ -3743,7 +3790,7 @@ ejs@^2.6.2:
   version "2.7.4"
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.7.4.tgz#48661287573dcc53e366c7a1ae52c3a120eec9ba"
 
-electron-builder@^21.2.0:
+electron-builder@21.2.0:
   version "21.2.0"
   resolved "https://registry.yarnpkg.com/electron-builder/-/electron-builder-21.2.0.tgz#b68ec4def713fc0b8602654ce842f972432f50c5"
   dependencies:
@@ -3779,11 +3826,18 @@ electron-reload@1.5.0:
   dependencies:
     chokidar "^3.0.2"
 
+electron-store@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/electron-store/-/electron-store-5.1.0.tgz#0b3cb66b15d0002678fc5c13e8b0c38a8678d670"
+  dependencies:
+    conf "^6.2.0"
+    type-fest "^0.7.1"
+
 electron-to-chromium@^1.3.247:
   version "1.3.273"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.273.tgz#94872d6823219f2812f2e35a2ce2a7d03c1eaa3f"
 
-electron-updater@^4.2.0:
+electron-updater@4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/electron-updater/-/electron-updater-4.2.0.tgz#f9ecfc657f65ead737d42b9efecf628d3756b550"
   dependencies:
@@ -3796,7 +3850,7 @@ electron-updater@^4.2.0:
     pako "^1.0.10"
     semver "^6.3.0"
 
-electron@^7.1.2:
+electron@7.1.2:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/electron/-/electron-7.1.2.tgz#d1726b9e50b29e97f5f12b52feb225ba87e0640f"
   dependencies:
@@ -3860,7 +3914,7 @@ entities@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/entities/-/entities-2.0.0.tgz#68d6084cab1b079767540d80e56a39b423e4abf4"
 
-env-cmd@^10.0.1:
+env-cmd@10.0.1:
   version "10.0.1"
   resolved "https://registry.yarnpkg.com/env-cmd/-/env-cmd-10.0.1.tgz#bcaedad78a0172c62113890dd4efec36d2ba0775"
   dependencies:
@@ -3871,7 +3925,7 @@ env-paths@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/env-paths/-/env-paths-2.2.0.tgz#cdca557dc009152917d6166e2febe1f039685e43"
 
-enzyme-adapter-react-16@^1.15.1:
+enzyme-adapter-react-16@1.15.1:
   version "1.15.1"
   resolved "https://registry.yarnpkg.com/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.15.1.tgz#8ad55332be7091dc53a25d7d38b3485fc2ba50d5"
   dependencies:
@@ -3916,7 +3970,7 @@ enzyme-to-json@^3.3.0:
   dependencies:
     lodash "^4.17.15"
 
-enzyme@^3.10.0:
+enzyme@3.10.0:
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/enzyme/-/enzyme-3.10.0.tgz#7218e347c4a7746e133f8e964aada4a3523452f6"
   dependencies:
@@ -5585,6 +5639,10 @@ is-obj@^1.0.0, is-obj@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/is-obj/-/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
 
+is-obj@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/is-obj/-/is-obj-2.0.0.tgz#473fb05d973705e3fd9620545018ca8e22ef4982"
+
 is-path-cwd@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-path-cwd/-/is-path-cwd-1.0.0.tgz#d225ec23132e89edd38fda767472e62e65f1106d"
@@ -5665,7 +5723,7 @@ is-symbol@^1.0.2:
   dependencies:
     has-symbols "^1.0.0"
 
-is-typedarray@~1.0.0:
+is-typedarray@^1.0.0, is-typedarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-typedarray/-/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
 
@@ -5879,7 +5937,7 @@ jest-environment-node@^24.9.0:
     jest-mock "^24.9.0"
     jest-util "^24.9.0"
 
-jest-enzyme@^7.1.2:
+jest-enzyme@7.1.2:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/jest-enzyme/-/jest-enzyme-7.1.2.tgz#91a10b2d3be1b56c0d65b34286e5bdc41ab4ba3d"
   dependencies:
@@ -6238,6 +6296,10 @@ json-parse-better-errors@^1.0.1, json-parse-better-errors@^1.0.2:
 json-schema-traverse@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz#69f6a87d9513ab8bb8fe63bdb0979c448e684660"
+
+json-schema-typed@^7.0.1:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/json-schema-typed/-/json-schema-typed-7.0.2.tgz#926deb7535cfb321613ee136eaed70c1419c89b4"
 
 json-schema@0.2.3:
   version "0.2.3"
@@ -6600,6 +6662,12 @@ make-dir@^2.0.0, make-dir@^2.1.0:
     pify "^4.0.1"
     semver "^5.6.0"
 
+make-dir@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-3.0.0.tgz#1b5f39f6b9270ed33f9f054c5c0f84304989f801"
+  dependencies:
+    semver "^6.0.0"
+
 makeerror@1.0.x:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/makeerror/-/makeerror-1.0.11.tgz#e01a5c9109f2af79660e4e8b9587790184f5a96c"
@@ -6756,7 +6824,7 @@ mimic-fn@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-1.2.0.tgz#820c86a39334640e99516928bd03fca88057d022"
 
-mimic-fn@^2.0.0:
+mimic-fn@^2.0.0, mimic-fn@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-2.1.0.tgz#7ed2c2ccccaf84d3ffcb7a69b57711fc2083401b"
 
@@ -7039,7 +7107,7 @@ node-releases@^1.1.29:
   dependencies:
     semver "^5.3.0"
 
-nodemon@^2.0.1:
+nodemon@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-2.0.1.tgz#cec436f8153ad5d3e6c27c304849a06cabea71cc"
   dependencies:
@@ -7283,6 +7351,12 @@ onetime@^2.0.0:
   resolved "https://registry.yarnpkg.com/onetime/-/onetime-2.0.1.tgz#067428230fd67443b2794b22bba528b6867962d4"
   dependencies:
     mimic-fn "^1.0.0"
+
+onetime@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/onetime/-/onetime-5.1.0.tgz#fff0f3c91617fe62bb50189636e99ac8a6df7be5"
+  dependencies:
+    mimic-fn "^2.1.0"
 
 open@^6.3.0:
   version "6.4.0"
@@ -7646,6 +7720,12 @@ pkg-up@2.0.0:
   resolved "https://registry.yarnpkg.com/pkg-up/-/pkg-up-2.0.0.tgz#c819ac728059a461cab1c3889a2be3c49a004d7f"
   dependencies:
     find-up "^2.1.0"
+
+pkg-up@^3.0.1:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/pkg-up/-/pkg-up-3.1.0.tgz#100ec235cc150e4fd42519412596a28512a0def5"
+  dependencies:
+    find-up "^3.0.0"
 
 pn@^1.1.0:
   version "1.1.0"
@@ -8336,7 +8416,7 @@ prop-types-exact@^1.2.0:
     object.assign "^4.1.0"
     reflect.ownkeys "^0.2.0"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   dependencies:
@@ -8549,7 +8629,7 @@ react-dom@16.11.0:
     prop-types "^15.6.2"
     scheduler "^0.17.0"
 
-react-electron-web-view@^2.0.1:
+react-electron-web-view@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/react-electron-web-view/-/react-electron-web-view-2.0.1.tgz#984b7bbbeb77e35bcca921dc50120fc8f2b0f27d"
   dependencies:
@@ -8566,6 +8646,12 @@ react-image-lightbox@5.1.1:
     prop-types "^15.6.2"
     react-modal "^3.8.1"
 
+react-input-autosize@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/react-input-autosize/-/react-input-autosize-2.2.2.tgz#fcaa7020568ec206bc04be36f4eb68e647c4d8c2"
+  dependencies:
+    prop-types "^15.5.8"
+
 react-is@^16.10.2:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
@@ -8578,7 +8664,7 @@ react-is@^16.8.1, react-is@^16.8.4:
   version "16.10.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.10.1.tgz#0612786bf19df406502d935494f0450b40b8294f"
 
-react-lifecycles-compat@^3.0.0:
+react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
@@ -8693,7 +8779,20 @@ react-scripts@3.2.0:
   optionalDependencies:
     fsevents "2.0.7"
 
-react-slick@^0.25.2:
+react-select@^3.0.8:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/react-select/-/react-select-3.0.8.tgz#06ff764e29db843bcec439ef13e196865242e0c1"
+  dependencies:
+    "@babel/runtime" "^7.4.4"
+    "@emotion/cache" "^10.0.9"
+    "@emotion/core" "^10.0.9"
+    "@emotion/css" "^10.0.9"
+    memoize-one "^5.0.0"
+    prop-types "^15.6.0"
+    react-input-autosize "^2.2.2"
+    react-transition-group "^2.2.1"
+
+react-slick@0.25.2:
   version "0.25.2"
   resolved "https://registry.yarnpkg.com/react-slick/-/react-slick-0.25.2.tgz#56331b67d47d8bcfe2dceb6acab1c8fd5bd1f6bc"
   dependencies:
@@ -8703,7 +8802,7 @@ react-slick@^0.25.2:
     lodash.debounce "^4.0.8"
     resize-observer-polyfill "^1.5.0"
 
-react-spinners@^0.6.1:
+react-spinners@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.6.1.tgz#c4f31a1d0e4c85cdb1785a8bdbe17311cf269b0a"
   dependencies:
@@ -8735,6 +8834,15 @@ react-transition-group@4.3.0:
     dom-helpers "^5.0.1"
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
+
+react-transition-group@^2.2.1:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.9.0.tgz#df9cdb025796211151a436c69a8f3b97b5b07c8d"
+  dependencies:
+    dom-helpers "^3.4.0"
+    loose-envify "^1.4.0"
+    prop-types "^15.6.2"
+    react-lifecycles-compat "^3.0.4"
 
 react@16.11.0:
   version "16.11.0"
@@ -10133,6 +10241,10 @@ type-fest@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.5.2.tgz#d6ef42a0356c6cd45f49485c3b6281fc148e48a2"
 
+type-fest@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.7.1.tgz#8dda65feaf03ed78f0a3f9678f1869147f7c5c48"
+
 type-fest@^0.8.0:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
@@ -10147,6 +10259,12 @@ type-is@~1.6.17, type-is@~1.6.18:
 type@^1.0.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/type/-/type-1.2.0.tgz#848dd7698dafa3e54a6c479e759c4bc3f18847a0"
+
+typedarray-to-buffer@^3.1.5:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/typedarray-to-buffer/-/typedarray-to-buffer-3.1.5.tgz#a97ee7a9ff42691b9f783ff1bc5112fe3fca9080"
+  dependencies:
+    is-typedarray "^1.0.0"
 
 typedarray@^0.0.6:
   version "0.0.6"
@@ -10792,6 +10910,15 @@ write-file-atomic@^2.0.0:
     graceful-fs "^4.1.11"
     imurmurhash "^0.1.4"
     signal-exit "^3.0.2"
+
+write-file-atomic@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/write-file-atomic/-/write-file-atomic-3.0.1.tgz#558328352e673b5bb192cf86500d60b230667d4b"
+  dependencies:
+    imurmurhash "^0.1.4"
+    is-typedarray "^1.0.0"
+    signal-exit "^3.0.2"
+    typedarray-to-buffer "^3.1.5"
 
 write@1.0.3:
   version "1.0.3"

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import ReactDOM from 'react-dom';
+import { RouteComponentProps } from 'react-router-dom';
 
 //  ============================================
 //  Utils
@@ -20,7 +20,6 @@ import InfoBtnStyled from 'assets/theme/components/info/infoBtnStyle';
 //  Types
 //  ============================================
 import { INITIAL_TYPE } from 'reducers/info';
-import { RouteComponentProps } from 'react-router-dom';
 
 //  ============================================
 //  Interface

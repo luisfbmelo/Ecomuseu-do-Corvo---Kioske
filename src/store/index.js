@@ -5,8 +5,8 @@ import multi from 'redux-multi';
 import reducers from 'reducers/index';
 import { createStore, applyMiddleware } from 'redux';
 
-
 export default function configureStore(initialState) {
+
   const store = applyMiddleware(
     multi,
     thunkMiddleware,

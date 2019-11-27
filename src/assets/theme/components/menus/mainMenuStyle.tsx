@@ -8,6 +8,19 @@ export const MainNav = styled.nav`
 
   display:flex;
   align-items: center;
+  position:relative;
+
+  .active{
+    a,
+    button{
+      background-color: ${props => props.theme.brown};
+      color: ${props => props.theme.primary};
+      
+      svg path{
+        fill: ${props => props.theme.primary};
+      }
+    }
+  }
   
 
   ul{
@@ -55,4 +68,11 @@ export const MainNav = styled.nav`
     margin-top: 30px; 
     font-size: 2vmin;
   }
+`
+
+export const BottomNav = styled.nav`
+  position:absolute;
+  bottom:0;
+  left:0;
+  width: 100%;
 `

@@ -5,12 +5,13 @@ import React from 'react';
 //  ============================================
 import HomeIcon from 'assets/img/icons/homeSVG';
 import InfoIcon from 'assets/img/icons/infoSVG';
+import SettingsIcon from 'assets/img/icons/settingsSVG';
 /*import helpIcon from 'assets/img/icons/help.svg'; */
 
 //  ============================================
 //  Styles
 //  ============================================
-import { MainNav } from 'assets/theme/components/menus/mainMenuStyle';
+import { MainNav, BottomNav } from 'assets/theme/components/menus/mainMenuStyle';
 
 //  ============================================
 //  Components
@@ -18,7 +19,22 @@ import { MainNav } from 'assets/theme/components/menus/mainMenuStyle';
 import {Link} from 'react-router-dom';
 import InfoBtn from 'containers/info/infoBtn';
 
+//  ============================================
+//  Utils
+//  ============================================
+import { getPageType } from 'utils/history';
+
+//  ============================================
+//  Helper functions
+//  ============================================
+//  Check if is active
+const isActive = (curPath: string, toCompare: string) => {
+  return curPath.indexOf(toCompare)>=0;
+}
+
 export default (props: any) => {
+  const { pathname, state } = props.location;
+
   return(
   <MainNav className="main-nav">
     <ul>
@@ -28,12 +44,21 @@ export default (props: any) => {
           <span>Início</span>
         </Link>
       </li>
-      <li>
+      {getPageType(pathname) && <li>
         <InfoBtn>
           <InfoIcon />
           <span>Sobre</span>
         </InfoBtn>
-      </li>
+      </li>}
     </ul>
+    <BottomNav>
+      <ul>
+        <li className={isActive(pathname, '/settings') ? 'active' : ''}>
+          <Link to={{pathname: state && state.prevPath ? state.prevPath : '/settings', state: { prevPath: pathname }}}>
+            <SettingsIcon />
+          </Link>
+        </li>
+      </ul>
+    </BottomNav>
   </MainNav>
 )}

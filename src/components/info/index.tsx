@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 //  ============================================
@@ -33,7 +33,7 @@ interface IState{
 }
 
 export default ({isOpen, content, closeModal}: IState) => {
-  if(!isOpen){
+  if(!isOpen || !content){
     return null
   }
 

@@ -21,6 +21,7 @@ interface IProps{
 interface IState{
   didUpdate: boolean;
   isOpen: boolean;
+  progress: number;
 }
 
 export default class Updater extends Component<IProps, IState>{
@@ -29,7 +30,8 @@ export default class Updater extends Component<IProps, IState>{
     
     this.state = {
       didUpdate: false, // MUST BE FALSE AS DEFAULT
-      isOpen: false
+      isOpen: false,
+      progress: 0
     }
   }
 
@@ -56,18 +58,25 @@ export default class Updater extends Component<IProps, IState>{
     console.log("UPDATE AVAILABLE");
     this.setState({
       isOpen: true,
-      didUpdate: false
+      didUpdate: false,
+      progress: 0
     })
   }
 
+  //  During download progress
   updateProgress = (event: any, progressObj: any) => {
     console.log("UPDATE PROGRESS");
     let log_message = "Download speed: " + progressObj.bytesPerSecond;
     log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
     log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
     console.log(log_message);
+
+    this.setState({
+      progress: progressObj.percent
+    });
   }
 
+  //  Update was downloaded
   updateDownloaded = () => {
     console.log("UPDATE DOWNLOADED");
     this.setState({
@@ -75,6 +84,7 @@ export default class Updater extends Component<IProps, IState>{
     })
   }
 
+  //  Submit restart
   restartApp = () => {
     ipcRenderer.send('app:restart');
   }
@@ -84,7 +94,7 @@ export default class Updater extends Component<IProps, IState>{
       return (
         <Fragment>
           <p>A aplicação possui uma atualização.</p>
-          <p>A descarregar...</p>
+          <p>A descarregar: {this.state.progress}%</p>
         </Fragment>
       )
     }

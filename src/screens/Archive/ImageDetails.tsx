@@ -10,7 +10,7 @@ import { MainContainerStyle } from 'assets/theme/global/containers';
 //  ====================================================
 //  Components
 //  ====================================================
-import Menu from 'components/menus/mainMenu';
+import Menu from 'containers/menus/mainMenu';
 import ImageDetailsContainer from 'containers/archive/images/details';
 import ImagePreview from 'containers/archive/images/details/preview';
 import ImageRelated from 'containers/archive/images/details/related';
