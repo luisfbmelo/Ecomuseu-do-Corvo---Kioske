@@ -17,33 +17,42 @@ import { HomeNav } from 'assets/theme/components/menus/homeMenuStyle';
 //  ============================================
 import {Link} from 'react-router-dom';
 
-export default (props: any) => (
-  <HomeNav>
-    <ul>
-      <li>
-        <Link to="/archive">
-          <div>            
-            <PhotoArch />
-            <span>Arquivo Fotográfico do Corvo</span>
-          </div>
-        </Link>
-      </li>
-      <li>
-        <Link to="/videos">
-          <div>
-            <VideoArch />
-            <span>Vivências Corvinas</span>
-          </div>
-        </Link>
-      </li>
-      <li>
-        <Link to="/visit">
-          <div>
-            <WebsiteVisit />
-            <span>Uma visita ao Corvo a<br/>1 de janeiro de 1973</span>
-          </div>
-        </Link>
-      </li>
-    </ul>
-  </HomeNav>
-)
+//  ============================================
+//  Utils
+//  ============================================
+import { useTranslation } from 'react-i18next';
+
+export default (props: any) => {
+  const { t } = useTranslation();
+
+  return(
+    <HomeNav>
+      <ul>
+        <li>
+          <Link to="/archive">
+            <div>            
+              <PhotoArch />
+              <span>{t('Arquivo Fotográfico do Corvo')}</span>
+            </div>
+          </Link>
+        </li>
+        <li>
+          <Link to="/videos">
+            <div>
+              <VideoArch />
+              <span>{t('Vivências Corvinas')}</span>
+            </div>
+          </Link>
+        </li>
+        <li>
+          <Link to="/visit">
+            <div>
+              <WebsiteVisit />
+              <span dangerouslySetInnerHTML={{ __html: t('Uma visita ao Corvo a<br/>1 de janeiro de 1973')}}></span>
+            </div>
+          </Link>
+        </li>
+      </ul>
+    </HomeNav>
+  )
+}

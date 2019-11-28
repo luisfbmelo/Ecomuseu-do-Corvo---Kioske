@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { withTranslation } from 'react-i18next';
 
 //  Actions
 import {
@@ -24,4 +25,4 @@ function mapDispatchToProps(dispatch: any) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(VideosList);
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(VideosList));

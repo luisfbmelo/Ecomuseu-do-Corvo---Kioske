@@ -24,8 +24,13 @@ const HomeStyle = styled.div`
   position: relative;
   text-align: center;
 
-  .App-logo {
+  .app-logo {
     height: 25vmin;
+
+    svg{
+      height:100%;
+      width: auto!important;
+    }
   }
 
   header {
@@ -37,7 +42,7 @@ const HomeStyle = styled.div`
     height:70vh;
 
     h1{
-      margin-top: 54px;
+      margin: 60px 0;
       font-size: 6vmin;
     }
     

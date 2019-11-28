@@ -7,6 +7,11 @@ import ReactDOM from 'react-dom';
 import InfoStyled from 'assets/theme/components/info/infoModalStyle';
 
 //  ============================================
+//  Utils
+//  ============================================
+import { useTranslation } from 'react-i18next';
+
+//  ============================================
 //  Types
 //  ============================================
 import { INITIAL_TYPE } from 'reducers/info';
@@ -25,10 +30,7 @@ interface IProps{
 
 interface IState{
   isOpen: boolean;
-  content: {
-    titulo: string,
-    descricao: string
-  };
+  content: any;
   closeModal: () => void;
 }
 
@@ -37,12 +39,19 @@ export default ({isOpen, content, closeModal}: IState) => {
     return null
   }
 
+  const { t, i18n } = useTranslation();
+
+  const finalContent = {
+    title: content[`titulo_${i18n.language}`] ? content[`titulo_${i18n.language}`] : content.titulo ? content.titulo : '',
+    description: content[`descricao_${i18n.language}`] ? content[`descricao_${i18n.language}`] : content.descricao ? content.descricao : ''
+  }
+
   return (
     ReactDOM.createPortal(
       <InfoStyled>
-        <h1>{content.titulo}</h1>
-        <p dangerouslySetInnerHTML={{__html: content.descricao.replace(/\n/g,"<br />")}}></p>
-        <button type="button" onClick={closeModal}><span>Continuar</span><i className="fas fa-arrow-right"></i></button>
+        <h1>{finalContent.title}</h1>
+        <p dangerouslySetInnerHTML={{__html: finalContent.description.replace(/\n/g,"<br />")}}></p>
+        <button type="button" onClick={closeModal}><span>{t('Continuar')}</span><i className="fas fa-arrow-right"></i></button>
       </InfoStyled>,
       document.body
     )

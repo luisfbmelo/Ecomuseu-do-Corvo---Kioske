@@ -16,6 +16,11 @@ import Slider from "assets/theme/components/galleries/slickStyle";
 //  ============================================
 import bgImage from 'assets/img/backgrounds/Main_background.png';
 
+//  ==============================================
+//  Utils
+//  ==============================================
+import { Trans, withTranslation, WithTranslation } from 'react-i18next';
+
 //  ============================================
 //  Types
 //  ============================================
@@ -29,15 +34,15 @@ interface TParams {
   id_cat: string
 };
 
-interface CatsListProps extends RouteComponentProps<TParams>{
+interface CatsListProps extends RouteComponentProps<TParams>, WithTranslation{
   fetchCats: () => void;
-  categories: INITIAL_TYPE
+  categories: INITIAL_TYPE;
 }
 
 interface CatsListState {
 }
 
-export default class SwipeToSlide extends Component<CatsListProps, CatsListState> {
+class SwipeToSlide extends Component<CatsListProps, CatsListState> {
   settings: {
     className: string;
     focusOnSelect: boolean;
@@ -51,7 +56,7 @@ export default class SwipeToSlide extends Component<CatsListProps, CatsListState
   
   constructor(props: CatsListProps) {
     super(props);
-
+    
     this.settings = {
       className: "center",
       focusOnSelect: true,
@@ -75,6 +80,9 @@ export default class SwipeToSlide extends Component<CatsListProps, CatsListState
   
   renderList = () => {
     return this.props.categories.data && this.props.categories.data.map((el: any) => {
+      //  Get translated
+      const title = el[`titulo_${this.props.i18n.language}`] ? el[`titulo_${this.props.i18n.language}`] : el.titulo ? el.titulo : '';
+
       return (
         <Link to={{
           pathname: `/archive/${el.id}`
@@ -87,7 +95,7 @@ export default class SwipeToSlide extends Component<CatsListProps, CatsListState
               backgroundImage: `url("${el.imagem ? process.env.REACT_APP_API_URL+el.imagem.url : bgImage}")`
             }}>
           </div>
-          <h3>{el.titulo}</h3>
+          <h3>{title}</h3>
         </Link>
       )
     })
@@ -97,8 +105,8 @@ export default class SwipeToSlide extends Component<CatsListProps, CatsListState
     
     return (
       <GalleryStyled>
-        <h1>Arquivo Fotográfico</h1>
-        <h2>Escolha um tema para iniciar a sua exploração do nosso arquivo</h2>
+        <h1><Trans>Arquivo Fotográfico</Trans></h1>
+        <h2><Trans>Escolha um tema para iniciar a sua exploração do nosso arquivo</Trans></h2>
         <Slider {...this.settings}>
           {this.renderList()}
         </Slider>
@@ -106,3 +114,5 @@ export default class SwipeToSlide extends Component<CatsListProps, CatsListState
     );
   }
 }
+
+export default withTranslation()(SwipeToSlide);

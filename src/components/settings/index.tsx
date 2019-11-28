@@ -17,16 +17,17 @@ import OptionsList from 'components/settings/list';
 //  ============================================
 import { INITIAL_TYPE } from 'reducers/settings';
 
-//  ==============================================
+//  ====================================================
 //  Utils
-//  ==============================================
+//  ====================================================
+import { Trans, withTranslation, WithTranslation } from 'react-i18next';
 const electron = window.require("electron");
 const { ipcRenderer } = electron;
 
 //  ============================================
 //  Interface
 //  ============================================
-interface IProps extends RouteComponentProps{
+interface IProps extends RouteComponentProps, WithTranslation{
   setSetting: (key: string, value: any) => void;
   setSettings: (data: any) => void;
   receiveUpdateSettings: (event: any, data: any) => void;
@@ -39,7 +40,7 @@ interface IState{
 }
 
 
-export default class Settings extends Component<IProps, IState>{
+class Settings extends Component<IProps, IState>{
   componentDidMount() {
     ipcRenderer.on('settings:receive', this.props.receiveUpdateSettings);
     this.props.updateSettings();
@@ -49,12 +50,19 @@ export default class Settings extends Component<IProps, IState>{
     ipcRenderer.removeListener('settings:receive', this.props.receiveUpdateSettings);
   }
 
+  //  Reset app NOW
   resetApp = (evt:any) => {
     ipcRenderer.send('reset:reload');
   }
 
+  //  Set app reset time
   handleResetTimeChange = (evt: { value: number, label: string}) => {
     this.props.setSetting('resettime', evt.value );
+  }
+
+  //  Set current language
+  setLanguage = (evt: { value: string, label: string}) => {
+    this.props.i18n.changeLanguage(evt.value);
   }
   
   render(){
@@ -63,14 +71,17 @@ export default class Settings extends Component<IProps, IState>{
     return (
       <SettingsStyled>
         <Backbutton prevLink={this.props.location.state ? this.props.location.state.prevPath : '/'}>
-          Voltar
+          <Trans>Voltar</Trans>
         </Backbutton>
         <OptionsList 
           resetAppHandler={this.resetApp}
           resetTime={resettime}
           onResetTimeChange={this.handleResetTimeChange}
+          setLanguage={this.setLanguage}
           />
       </SettingsStyled>
     )
   }
 }
+
+export default withTranslation()(Settings);

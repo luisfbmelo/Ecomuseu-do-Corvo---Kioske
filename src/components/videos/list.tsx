@@ -4,6 +4,7 @@ import React, { Component } from "react";
 //  Utils
 //  ============================================
 import { youTubeGetID } from 'utils/youtube';
+import { Trans, WithTranslation } from 'react-i18next';
 
 //  ============================================
 //  Styles
@@ -23,7 +24,7 @@ import { INITIAL_TYPE } from 'reducers/videos';
 //  ============================================
 //  Interface
 //  ============================================
-interface VideosListProps{
+interface VideosListProps extends WithTranslation{
   fetchVideos: () => void;
   resetVideos: () => void;
   videos: INITIAL_TYPE
@@ -34,8 +35,7 @@ interface VideosListState {
   openVideo: boolean;
 }
 
-
-export default class VideosListComp extends Component<VideosListProps, VideosListState>{
+class VideosListComp extends Component<VideosListProps, VideosListState>{
   initialState: VideosListState;
 
   constructor(props: VideosListProps) {
@@ -101,15 +101,15 @@ export default class VideosListComp extends Component<VideosListProps, VideosLis
     
     return(
       <VideoContainerStyled>
-        <h1>Vivências Corvinas</h1>
-        <h2>Pressione sobre um vídeo para visualizar o testemunho da vida na ilha do Corvo</h2>
+        <h1><Trans>Vivências Corvinas</Trans></h1>
+        <h2><Trans>Pressione sobre um vídeo para visualizar o testemunho da vida na ilha do Corvo</Trans></h2>
         <VideosListStyled>
           {this.renderList()}          
         </VideosListStyled>
 
         <ModalVideo
           isOpen={this.state.openVideo}
-          videoUrl={`https://www.youtube.com/embed/${this.state.selectedVideo}?autoplay=1&fs=0&cc_load_policy=1&hl=en`}
+          videoUrl={`https://www.youtube.com/embed/${this.state.selectedVideo}?autoplay=1&fs=0&cc_load_policy=1&hl=${this.props.i18n.language}`}
           onClose={this.closedVideo}
           /*youtube={{
             autoplay: 1,
@@ -122,3 +122,5 @@ export default class VideosListComp extends Component<VideosListProps, VideosLis
     )
   }
 }
+
+export default VideosListComp;

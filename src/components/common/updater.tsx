@@ -9,6 +9,7 @@ import GenericModal from 'assets/theme/components/common/genericModalStyle';
 //  ==============================================
 //  Utils
 //  ==============================================
+import { Trans } from 'react-i18next';
 const electron = window.require("electron");
 const { ipcRenderer } = electron;
 
@@ -93,16 +94,16 @@ export default class Updater extends Component<IProps, IState>{
     if(!this.state.didUpdate){
       return (
         <Fragment>
-          <p>A aplicação possui uma atualização.</p>
-          <p>A descarregar: {this.state.progress}%</p>
+          <p><Trans>A aplicação possui uma atualização.</Trans></p>
+          <p><Trans>A descarregar: {this.state.progress}%</Trans></p>
         </Fragment>
       )
     }
 
     return (
       <Fragment>
-        <p>Atualização descarregada. Será instalada depois de reiniciar.</p>
-        <p>Reiniciar agora?</p>
+        <p><Trans>Atualização descarregada. Será instalada depois de reiniciar.</Trans></p>
+        <p><Trans>Reiniciar agora?</Trans></p>
       </Fragment>
     )
   }
@@ -116,9 +117,9 @@ export default class Updater extends Component<IProps, IState>{
       ReactDOM.createPortal(
         <GenericModal>
           {this.printMessage()}
-          <button type="button" onClick={this.closeModal}>Fechar</button>
+          <button type="button" onClick={this.closeModal}><Trans>Fechar</Trans></button>
           {this.state.didUpdate && 
-            <button type="button" onClick={this.restartApp}>Reiniciar</button>
+            <button type="button" onClick={this.restartApp}><Trans>Reiniciar</Trans></button>
           }
         </GenericModal>,
         document.body

@@ -11,6 +11,11 @@ import CatsListStyled from 'assets/theme/components/archive/catsListStyle';
 //  ============================================
 import Backbutton from 'components/common/backButton';
 
+//  ====================================================
+//  Utils
+//  ====================================================
+import { Trans, withTranslation, WithTranslation } from 'react-i18next';
+
 //  ============================================
 //  Types
 //  ============================================
@@ -24,7 +29,7 @@ interface TParams {
   id_cat: string
 };
 
-interface CatsListProps extends RouteComponentProps<TParams>{
+interface CatsListProps extends RouteComponentProps<TParams>, WithTranslation{
   fetchCats: () => void;
   categories: INITIAL_TYPE
 }
@@ -32,7 +37,7 @@ interface CatsListProps extends RouteComponentProps<TParams>{
 interface CatsListState {
 }
 
-class CatsList extends Component<CatsListProps, CatsListState>{
+class CatsList extends Component<CatsListProps, CatsListState>{ 
   activeElRef: React.RefObject<HTMLLIElement>;
   scrollableEl: React.RefObject<HTMLUListElement>;
 
@@ -75,15 +80,18 @@ class CatsList extends Component<CatsListProps, CatsListState>{
         elProps.ref = this.activeElRef;
       }
 
+      //  Get translated
+      const title = el[`titulo_${this.props.i18n.language}`] ? el[`titulo_${this.props.i18n.language}`] : el.titulo ? el.titulo : '';
+
       return (
         <li 
             {...elProps}
           >
           {el.id===parseInt(this.props.match.params.id_cat) ? 
-            <span>{el.titulo}</span>
+            <span>{title}</span>
           :
             <Link to={`/archive/${el.id}`}>
-              {el.titulo}
+              {title}
             </Link>
           }
           
@@ -99,7 +107,7 @@ class CatsList extends Component<CatsListProps, CatsListState>{
 
     return <CatsListStyled>
       <Backbutton prevLink="/archive">
-        Arquivo fotográfico
+        <Trans>Arquivo Fotográfico</Trans>
       </Backbutton>
       <ul ref={this.scrollableEl}>
         {this.renderList()}
@@ -109,4 +117,4 @@ class CatsList extends Component<CatsListProps, CatsListState>{
   
 }
 
-export default CatsList;
+export default withTranslation()(CatsList);

@@ -11,6 +11,11 @@ import ImageDetailsStyled, { ImageMetaStyled } from 'assets/theme/components/arc
 //  ============================================
 import Backbutton from 'components/common/backButton';
 
+//  ====================================================
+//  Utils
+//  ====================================================
+import { Trans, withTranslation, WithTranslation } from 'react-i18next';
+
 //  ============================================
 //  Types
 //  ============================================
@@ -26,7 +31,7 @@ interface TParams {
   id_image: string
 };
 
-interface ImageDetailsProps extends RouteComponentProps<TParams>{
+interface ImageDetailsProps extends RouteComponentProps<TParams>, WithTranslation{
   fetchImageDetails: (id: string, filters?: any) => void;
   fetchCategory: (id: string, filters?: any) => void;
   resetImage: () => void;
@@ -38,7 +43,7 @@ interface ImageDetailsProps extends RouteComponentProps<TParams>{
 interface ImageDetailsState {
 }
 
-export default class ImageDetails extends Component<ImageDetailsProps, ImageDetailsState>{
+class ImageDetails extends Component<ImageDetailsProps, ImageDetailsState>{
   fields: { name: string; label: string; }[];
 
   constructor(props: ImageDetailsProps) {
@@ -48,15 +53,15 @@ export default class ImageDetails extends Component<ImageDetailsProps, ImageDeta
     this.fields = [
       {
         name: 'descricao',
-        label: 'Descrição'
+        label: this.props.t('Descrição')
       },
       {
         name: 'num_inventario',
-        label: 'N.º de Inventário'
+        label: this.props.t('N.º de Inventário')
       },
       {
         name: 'proprietario',
-        label: 'Proprietário'
+        label: this.props.t('Proprietário')
       }
     ]
   }
@@ -85,17 +90,31 @@ export default class ImageDetails extends Component<ImageDetailsProps, ImageDeta
   printMeta = () => {
     const tempData = this.props.image.data;
 
+    const { language } = this.props.i18n;
+
     //  First, filter keys by those that can be shown in this page based on this.fields property. Must reduce this.fields array in order to get only the name of properties to filter.
     //  Second, filter keys that have a value that is not null
-    return Object.keys(tempData)
-      .filter((key: string) => this.fields.reduce((acc: Array<string>, cur) => [...acc, cur.name],[])
-      .filter((key:string) => tempData[key]!==null).indexOf(key)>=0)
+    return Object.keys(tempData)    
+      //  1. Reduce name property to create an array of names
+      //  2. Get names that exist in images array retrieved from API
+      .filter((key: string) => this.fields.reduce((acc: Array<string>, cur: any) => [...acc, cur.name],[]).filter((key:string) => tempData[key]!==null).indexOf(key)>=0)
       .map((key: string) => {
-        const dataObj = this.fields.find((el: { name: string, label: string }) => el.name && el.name===key);
-        const value = dataObj && tempData[dataObj.name];
+        //  Get field object that matches the current key
+        const fieldObj = this.fields.find((el: { name: string, label: string }) => el.name && key.indexOf(el.name)>=0);
+
+        if(!fieldObj){
+          return null;
+        }
+
+        //  Get value based on field object and its name. But first, check if there is any translation key
+        const finalValueKey = tempData[`${fieldObj.name}_${language}`] && tempData[`${fieldObj.name}_${language}`]!=='' ?  `${fieldObj.name}_${language}` : fieldObj.name;
+
+        //  Get value of that specific
+        const value = fieldObj && tempData[finalValueKey];
+        
         return (
-          <article key={dataObj && dataObj.label}>
-            <h6>{dataObj && dataObj.label}</h6>
+          <article key={fieldObj && fieldObj.label}>
+            <h6>{fieldObj && fieldObj.label}</h6>
             <p dangerouslySetInnerHTML={{__html: value.replace(/\n/g,"<br />")}}></p>
           </article>
         )
@@ -110,7 +129,7 @@ export default class ImageDetails extends Component<ImageDetailsProps, ImageDeta
     return (
       <ImageDetailsStyled>
         <Backbutton prevLink={`/archive/${this.props.match.params.id_cat}`}>
-          Voltar a <em>"{this.props.category.data.titulo}"</em>
+          <Trans>Voltar a</Trans> <em>"{this.props.category.data.titulo}"</em>
         </Backbutton>
         <ImageMetaStyled>
           {this.printMeta()}
@@ -119,3 +138,5 @@ export default class ImageDetails extends Component<ImageDetailsProps, ImageDeta
     )
   }
 }
+
+export default withTranslation()(ImageDetails);

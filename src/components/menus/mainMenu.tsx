@@ -23,6 +23,7 @@ import InfoBtn from 'containers/info/infoBtn';
 //  Utils
 //  ============================================
 import { getPageType } from 'utils/history';
+import { useTranslation } from 'react-i18next';
 
 //  ============================================
 //  Helper functions
@@ -34,6 +35,7 @@ const isActive = (curPath: string, toCompare: string) => {
 
 export default (props: any) => {
   const { pathname, state } = props.location;
+  const { t } = useTranslation();
 
   return(
   <MainNav className="main-nav">
@@ -41,13 +43,13 @@ export default (props: any) => {
       <li>
         <Link to="/">
           <HomeIcon />
-          <span>Início</span>
+          <span>{t('Início')}</span>
         </Link>
       </li>
       {getPageType(pathname) && <li>
         <InfoBtn>
           <InfoIcon />
-          <span>Sobre</span>
+          <span>{t('Sobre')}</span>
         </InfoBtn>
       </li>}
     </ul>

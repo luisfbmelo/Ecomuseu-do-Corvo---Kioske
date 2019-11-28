@@ -87,7 +87,7 @@ function createWindow () {
   //  Check idle time of system
   setInterval(function() {
     const resetWarn = parseInt(store.get('settings:resettime'))-10;    //  Seconds
-    const resetTime = store.get('settings:resettime');    //  Seconds
+    const resetTime = parseInt(store.get('settings:resettime'));    //  Seconds
 
     const totalIdle = powerMonitor.getSystemIdleTime();
 

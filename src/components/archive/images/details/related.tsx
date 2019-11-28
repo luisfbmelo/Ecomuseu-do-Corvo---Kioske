@@ -12,6 +12,11 @@ import { GenericGalleryStyled } from 'assets/theme/components/galleries/galleryS
 //  ============================================
 import { GenericSlider } from "assets/theme/components/galleries/slickStyle";
 
+//  ====================================================
+//  Utils
+//  ====================================================
+import { Trans } from 'react-i18next';
+
 //  ============================================
 //  Types
 //  ============================================
@@ -113,7 +118,7 @@ export default class ImageRelated extends Component<ImageRelatedProps, ImageRela
       <ImageRelatedStyled>
         <div className="text-center">
           <i className="fas fa-chevron-left" onClick={this.prevSlide}></i>
-          <span>Deslize para visualizar mais deste tema</span>
+          <span><Trans>Deslize para visualizar mais deste tema</Trans></span>
           <i className="fas fa-chevron-right" onClick={this.nextSlide}></i>
         </div>
         <GenericGalleryStyled>

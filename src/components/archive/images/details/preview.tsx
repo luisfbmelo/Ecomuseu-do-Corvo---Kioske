@@ -11,6 +11,11 @@ import ImagePreviewStyled from 'assets/theme/components/archive/imagePreviewStyl
 //  ============================================
 import Lightbox from 'react-image-lightbox';
 
+//  ====================================================
+//  Utils
+//  ====================================================
+import { Trans } from 'react-i18next';
+
 //  ============================================
 //  Types
 //  ============================================
@@ -62,7 +67,7 @@ export default class ImagePreview extends Component<ImagePreviewProps, ImagePrev
           <div className="image-wrapper">
             <img src={process.env.REACT_APP_API_URL+this.props.image.data.imagem.url} alt={"Preview image "+this.props.image.data.id}/>
             <div className="btn-expand">
-              <i className="fas fa-expand"></i><span>Ecrã inteiro</span>
+              <i className="fas fa-expand"></i><span><Trans>Ecrã inteiro</Trans></span>
             </div>
           </div>
         </button>
