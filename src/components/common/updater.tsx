@@ -95,7 +95,7 @@ export default class Updater extends Component<IProps, IState>{
       return (
         <Fragment>
           <p><Trans>A aplicação possui uma atualização.</Trans></p>
-          <p><Trans>A descarregar: {this.state.progress}%</Trans></p>
+          <p><Trans>A descarregar:</Trans> {this.state.progress}%</p>
         </Fragment>
       )
     }

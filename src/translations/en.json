@@ -10,7 +10,7 @@
   "Voltar": "Go back",
   "Deslize para visualizar mais deste tema": "Slide to view more of this subject",
   "A aplicação possui uma atualização.": "There is an update available.",
-  "A descarregar: {this.state.progress}%": "Downloading : {this.state.progress}%",
+  "A descarregar:": "Downloading:",
   "Atualização descarregada. Será instalada depois de reiniciar.": "Update downloaded. It will be installed after the app restart.",
   "Reiniciar agora?": "Restart now?",
   "Reiniciar aplicação": "Restart app",
