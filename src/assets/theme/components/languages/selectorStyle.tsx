@@ -24,27 +24,29 @@ export default styled.section`
       padding:0 5px;
 
       button{
-        background-color: white;
         border-radius: 5px;
         padding: 15px 20px;
         margin:0;
         border:none;
         transition: all 0.2s ease;
-        box-shadow: 0px 1px 8px 0px #00000059;
+        opacity: 0.7;
+        
+        background-color: '#e0e0e0';
 
-        &:hover{
-          background-color: ${props => hexToRgbA('#ffffff', 0.6)};          
+        &:hover{                
+          background-color: '#ffffff';
+          box-shadow: 0px 1px 8px 0px #00000090;   
           cursor:pointer;
+          opacity: 1;
         }
       }
 
       &.active{
         button{
-          background-color: ${props => props.theme.primary};
+          opacity: 1;
 
-          .lang-key{
-            background-color: ${props => hexToRgbA(props.theme.brown, 0.5)};
-          }
+          background-color: ${() => hexToRgbA('#ffffff', 1)};
+          box-shadow: 0px 1px 8px 0px #00000090;
         }
       }
 
