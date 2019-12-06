@@ -27,9 +27,9 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn react-build`
+### `yarn react-build:staging`
 
-As as `react-build`, but uses the `.env.staging` file in order to get the staging configuration.
+Same as `react-build`, but uses the `.env.staging` file in order to get the staging configuration.
 
 ### `yarn react-eject`
 
