@@ -48,7 +48,7 @@ export default (props: any) => {
           <Link to="/visit">
             <div>
               <WebsiteVisit />
-              <span dangerouslySetInnerHTML={{ __html: t('Uma visita ao Corvo a<br/>1 de janeiro de 1973')}}></span>
+              <span dangerouslySetInnerHTML={{ __html: t('Uma visita ao Corvo a<br/>1 de janeiro de 1937')}}></span>
             </div>
           </Link>
         </li>

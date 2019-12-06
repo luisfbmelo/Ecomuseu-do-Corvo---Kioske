@@ -45,7 +45,12 @@ export default class WebviewContainer extends Component<IProps, IState>{
       webviewObj.addEventListener('dom-ready', this.viewReady);
       webviewObj.addEventListener('did-start-loading', this.loadstart);
       webviewObj.addEventListener('did-stop-loading', this.loadstop);
+      webviewObj.addEventListener('console-message', this.consoleMessage);
     }
+  }
+
+  consoleMessage = (e: any) => {
+    console.log('Guest page logged a message:', e.message);
   }
 
   viewReady = () => {
@@ -90,7 +95,7 @@ export default class WebviewContainer extends Component<IProps, IState>{
           reload={this.reload}
           canGoBack={this.state.canGoBack}
           canGoForward={this.state.canGoForward}/>
-        <webview src="https://www.csarmento.uminho.pt/site/s/porgener/page/corvo" ref={this.webview}/>
+        <webview src="https://www.csarmento.uminho.pt/site/s/porgener/page/corvo" ref={this.webview} webpreferences="nativeWindowOpen=yes"/>
       </WebviewStyled>
     )
   }

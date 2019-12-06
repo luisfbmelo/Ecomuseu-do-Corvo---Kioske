@@ -81,6 +81,7 @@ export default class Updater extends Component<IProps, IState>{
   updateDownloaded = () => {
     console.log("UPDATE DOWNLOADED");
     this.setState({
+      isOpen: true,
       didUpdate: true
     })
   }
