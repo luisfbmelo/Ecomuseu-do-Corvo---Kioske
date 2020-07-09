@@ -1,6 +1,6 @@
 {
   "name": "ecomuseu_corvo_kioske",
-  "version": "0.0.1-alpha.8",
+  "version": "0.0.1-alpha.9",
   "author": "Luís Melo",
   "private": true,
   "repository": {
@@ -55,6 +55,7 @@
     "react-start": "react-scripts start",
     "react-build": "react-scripts build",
     "react-build:staging": "env-cmd -f .env.staging react-scripts build",
+    "react-build:production": "env-cmd -f .env.production react-scripts build",
     "react-test": "react-scripts test",
     "react-eject": "react-scripts eject",
     "electron-start": "set NODE_ENV=development&& electron ./process.js",
